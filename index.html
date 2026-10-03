@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -43,14 +43,7 @@
           </div>
         </div>
 
-        <nav class="hidden md:flex items-center space-x-7 text-xs uppercase tracking-widest text-slate-300 font-medium">
-          <a href="#verdict" class="hover:text-amber-400 transition-colors">Verdict</a>
-          <a href="#market-map" class="hover:text-amber-400 transition-colors">Market Map</a>
-          <a href="#comparison" class="hover:text-amber-400 transition-colors">3-Way Matrix</a>
-          <a href="#simulator" class="hover:text-amber-400 transition-colors">ROI Simulator</a>
-          <a href="#catalysts" class="hover:text-amber-400 transition-colors">Price Catalysts</a>
-          <a href="#portfolio" class="hover:text-amber-400 transition-colors">Portfolio Synergy</a>
-        </nav>
+        
 
         <div class="flex items-center space-x-4">
           <div class="flex items-center p-1 rounded-full bg-slate-900/90 border border-slate-700/60 text-xs">
@@ -68,10 +61,91 @@
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
             </svg>
           </a>
+
+          <!-- Hamburger Button -->
+          <button id="btn-hamburger" aria-label="Open Navigation Drawer" class="w-10 h-10 rounded-full bg-slate-900/90 border border-amber-500/30 hover:border-amber-400 flex items-center justify-center text-amber-300 hover:text-white transition-all hover:scale-105 shadow-md">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
   </header>
+  <!-- Side Drawer Backdrop -->
+  <div id="drawer-backdrop" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[90] backdrop-closed transition-opacity duration-300"></div>
+
+  <!-- Off-Canvas Side Navigation Drawer -->
+  <aside id="side-drawer" class="fixed top-0 right-0 h-full w-84 max-w-[85vw] bg-[#0b0e14]/98 border-l border-amber-500/30 z-[100] p-6 flex flex-col justify-between shadow-2xl backdrop-blur-xl drawer-closed overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-full border border-amber-400/40 flex items-center justify-center bg-amber-500/10">
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-cinzel text-xs font-bold text-amber-200 uppercase tracking-wider">Tanmay Advisory</h3>
+            <span class="text-[10px] text-slate-400">Navigation Index</span>
+          </div>
+        </div>
+        <button id="btn-close-drawer" aria-label="Close Navigation" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-700 hover:border-amber-400/60 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="mt-4 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
+        <span class="text-[10px] uppercase font-bold text-amber-400 tracking-widest block">VIP Deal Update</span>
+        <span class="text-xs text-slate-200 font-medium block mt-0.5">DAMAC Islands 2: 4% Discount + 100% DLD Waiver Applied</span>
+      </div>
+
+      <nav class="mt-6 flex flex-col space-y-2 font-medium text-xs tracking-wider uppercase">
+        <a href="#verdict" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>1. Strategic Verdict</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#market-map" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>2. Geographic Map</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#comparison" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>3. 3-Way Comparative Matrix</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#simulator" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>4. ROI & Yearly Projections</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#catalysts" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>5. Price Catalysts & DWC</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#developers" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>6. Developer Track Records</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#portfolio" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>7. Synergy with DAMAC Chelsea</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#blueprints" class="drawer-link flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/10 hover:text-amber-300 text-slate-300 border border-transparent hover:border-amber-500/20 transition-all">
+          <span>8. Developer Floor Plans & Specs</span>
+          <svg class="w-3.5 h-3.5 text-amber-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-slate-800/80 mt-6">
+      <div class="flex items-center justify-between text-[11px] text-slate-400">
+        <span>Dubai Private Advisory</span>
+        <span class="text-amber-400 font-semibold">Exclusively for Tanmay</span>
+      </div>
+    </div>
+  </aside>
+
 ﻿  <!-- Hero Section -->
   <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -96,7 +170,7 @@
             <div class="glass-panel p-3.5 rounded-xl border border-amber-500/20">
               <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold block">Max Profit Arbitrage</span>
               <span class="text-base sm:text-lg font-bold text-white tracking-tight">DAMAC Islands 2</span>
-              <span class="text-[11px] text-slate-400 block mt-0.5">Entry: 1,241 AED/sqft</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5">Net Entry: 1,191 AED/sqft</span>
             </div>
             <div class="glass-panel p-3.5 rounded-xl border border-emerald-500/20">
               <span class="text-[10px] uppercase tracking-wider text-emerald-400 font-semibold block">Fastest Flip / Exit</span>
@@ -168,20 +242,28 @@
           <span class="text-[11px] font-bold tracking-widest uppercase text-amber-400">1. Highest Absolute Profit & ROI</span>
           <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-3">DAMAC Islands 2 (Tahiti 5BR)</h3>
           <p class="text-slate-300 text-sm leading-relaxed mb-4">
-            Entry pricing at <strong class="text-amber-300" data-sqft-rate-aed="1241.5">1,241 AED/sq.ft</strong> provides the largest arbitrage gap in Dubai. With adjacent luxury master communities like <span class="text-white">The Oasis (AED 2,065)</span> and <span class="text-white">The Acres (AED 1,977)</span> pulling area valuations upward, an exit at handover at AED 1,950/sq.ft generates:
+            Entry pricing at <strong class="text-amber-300" data-sqft-rate-aed="1191.85">1,191.85 AED/sq.ft</strong> (with 4% discount & 100% DLD waiver) provides the largest arbitrage gap in Dubai. With adjacent luxury master communities like <span class="text-white">The Oasis (AED 2,065)</span> and <span class="text-white">The Acres (AED 1,977)</span> pulling area valuations upward, an exit at handover at AED 1,950/sq.ft generates:
           </p>
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-amber-500/20 space-y-1.5 mb-4">
             <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Net Purchase Price:</span>
+              <span class="text-amber-300 font-bold" data-currency-aed="3764160">AED 3,764,160</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Investor Incentives (4% + DLD):</span>
+              <span class="text-emerald-400 font-bold" data-currency-aed="313680">AED 313,680 Saved</span>
+            </div>
+            <div class="flex justify-between text-xs">
               <span class="text-slate-400">Projected Net Gain:</span>
-              <span class="text-emerald-400 font-bold" data-currency-aed="2237568">+AED 2,237,568</span>
+              <span class="text-emerald-400 font-bold" data-currency-aed="2394408">+AED 2,394,408</span>
             </div>
             <div class="flex justify-between text-xs">
               <span class="text-slate-400">Cash-on-Cash Return:</span>
-              <span class="text-amber-300 font-extrabold">+114.1%</span>
+              <span class="text-amber-300 font-extrabold">+127.2%</span>
             </div>
             <div class="flex justify-between text-xs">
               <span class="text-slate-400">Equity Paid to Handover:</span>
-              <span class="text-slate-200" data-currency-aed="1960500">50% (AED 1,960,500)</span>
+              <span class="text-slate-200" data-currency-aed="1882080">50% (AED 1,882,080)</span>
             </div>
           </div>
           <p class="text-xs text-slate-400">Ideal for Tanmay to maximize capital multiple on invested cash through 2030.</p>
@@ -338,13 +420,17 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- CARD 1: DAMAC ISLANDS 2 -->
-        <div class="glass-panel rounded-2xl overflow-hidden border border-amber-500/30 flex flex-col justify-between">
+        <div class="glass-panel rounded-2xl overflow-hidden border border-amber-500/40 flex flex-col justify-between shadow-xl relative">
+          <div class="absolute -top-1 -right-1 z-20">
+            <span class="px-3 py-1 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-widest rounded-bl-xl shadow-lg">4% Disc + 100% DLD Waiver</span>
+          </div>
+
           <div>
             <div class="relative aspect-[16/10] overflow-hidden">
               <img src="assets/damac_lagoon.jpg" alt="DAMAC Islands 2 Tahiti" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
               <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-amber-500/90 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider">Top Profit Driver</span>
-              <span class="absolute bottom-3 left-3 text-xs text-white font-semibold">Unit: A126X10 (Tahiti 2)</span>
+              <span class="absolute bottom-3 left-3 text-xs text-white font-semibold">Unit: A126X10 (Tahiti 2 End Unit)</span>
             </div>
             
             <div class="p-6 space-y-4">
@@ -354,14 +440,27 @@
                 <p class="text-xs text-slate-300">5 BR Townhouse End Unit (DSTH-E)</p>
               </div>
 
-              <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/20">
-                <div class="flex justify-between items-baseline">
-                  <span class="text-xs text-slate-400">Total Purchase:</span>
-                  <span class="text-xl font-extrabold text-amber-300" data-currency-aed="3921000">AED 3,921,000</span>
+              <!-- VIP Pricing Breakdown Card -->
+              <div class="p-4 rounded-xl bg-slate-900/95 border border-amber-500/30 space-y-2">
+                <div class="flex justify-between items-baseline text-xs">
+                  <span class="text-slate-400 line-through">Gross Contract:</span>
+                  <span class="text-slate-400 line-through" data-currency-aed="3921000">AED 3,921,000</span>
                 </div>
-                <div class="flex justify-between items-baseline mt-1 text-xs">
-                  <span class="text-slate-400">Rate per sq.ft:</span>
-                  <span class="text-emerald-400 font-bold" data-sqft-rate-aed="1241.51">1,241 AED/sq.ft</span>
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs text-amber-400 font-semibold">Investor Net (4% Disc):</span>
+                  <span class="text-2xl font-extrabold text-amber-300" data-currency-aed="3764160">AED 3,764,160</span>
+                </div>
+                <div class="flex justify-between items-baseline text-xs pt-1 border-t border-slate-800">
+                  <span class="text-slate-400">Effective Rate/sq.ft:</span>
+                  <span class="text-emerald-400 font-bold" data-sqft-rate-aed="1191.85">1,191.85 AED/sq.ft</span>
+                </div>
+                <div class="flex justify-between items-center text-[11px] bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20 mt-1">
+                  <span class="text-emerald-300 font-medium">100% DLD Fee Waived:</span>
+                  <span class="text-emerald-400 font-bold">AED 156,840 Saved</span>
+                </div>
+                <div class="flex justify-between items-center text-[11px] bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20">
+                  <span class="text-amber-300 font-bold">Total Incentive Package:</span>
+                  <span class="text-amber-300 font-extrabold" data-currency-aed="313680">AED 313,680 ($85.4K)</span>
                 </div>
               </div>
 
@@ -375,24 +474,24 @@
                   <span class="text-white font-medium">2,363.75 sq.ft (Corner)</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-slate-800">
-                  <span class="text-slate-400">Deposit (Immediate):</span>
-                  <span class="text-white font-medium" data-currency-aed="784200">20% (AED 784,200)</span>
+                  <span class="text-slate-400">Deposit (20% Net):</span>
+                  <span class="text-white font-medium" data-currency-aed="752832">AED 752,832</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-slate-800">
                   <span class="text-slate-400">Construction Terms:</span>
                   <span class="text-slate-200">0.75% monthly (low cash drag)</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-slate-800">
-                  <span class="text-slate-400">Balance on Handover:</span>
-                  <span class="text-amber-300 font-bold" data-currency-aed="1960500">50% (AED 1,960,500)</span>
+                  <span class="text-slate-400">Balance on Handover (50%):</span>
+                  <span class="text-amber-300 font-bold" data-currency-aed="1882080">AED 1,882,080</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-slate-800">
                   <span class="text-slate-400">Completion Date:</span>
                   <span class="text-white font-semibold">June 30, 2030</span>
                 </div>
                 <div class="flex justify-between py-1.5">
-                  <span class="text-slate-400">DLD Fees (4%):</span>
-                  <span class="text-slate-300" data-currency-aed="156840">AED 156,840</span>
+                  <span class="text-slate-400">Government DLD Fee:</span>
+                  <span class="text-emerald-400 font-extrabold uppercase">100% Waived (AED 0)</span>
                 </div>
               </div>
             </div>
@@ -585,7 +684,7 @@
               <div>
                 <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">DAMAC Islands 2</span>
                 <h4 class="font-cinzel text-lg font-bold text-white">Tahiti 5BR End Unit</h4>
-                <p class="text-xs text-slate-400">Initial: <span data-currency-aed="3921000">AED 3.92M</span> (1,241/sqft)</p>
+                <p class="text-xs text-slate-400">Net Entry: <span data-currency-aed="3764160">AED 3.76M</span> (1,191/sqft ? DLD Waived)</p>
               </div>
               <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Max Gain</span>
             </div>
@@ -674,8 +773,154 @@
 
         </div>
 
-      </div>
+      
+        <!-- Interactive Year-by-Year Valuation Engine (2026 - 2030) -->
+        <div class="mt-12 pt-10 border-t border-slate-800/80">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+              <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-semibold tracking-wider uppercase mb-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span>Annualized Capital Growth Path</span>
+              </div>
+              <h3 class="font-cinzel text-2xl font-bold text-white">Estimated Valuation Trajectory (2026 ? 2030)</h3>
+              <p class="text-xs text-slate-400 mt-1">Dynamic values modeled on your target exit rate, synchronized with surrounding master infrastructure completions.</p>
+            </div>
+            <div class="text-xs text-slate-400 bg-slate-900/90 px-4 py-2 rounded-xl border border-slate-800 self-start md:self-auto">
+              <span>Exit Benchmark: </span>
+              <strong class="text-amber-300 font-bold">Correlated with Target Slider</strong>
+            </div>
+          </div>
 
+          <!-- Desktop & Tablet Table View -->
+          <div class="hidden lg:block overflow-x-auto rounded-2xl border border-slate-800/90 bg-slate-900/70">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="border-b border-slate-800 bg-slate-950/80 text-[11px] uppercase tracking-wider text-slate-400">
+                  <th class="py-4 px-6 font-semibold">Development & Unit</th>
+                  <th class="py-4 px-4 font-semibold text-center">2026 (Entry)</th>
+                  <th class="py-4 px-4 font-semibold text-center">2027 (The Oasis Start)</th>
+                  <th class="py-4 px-4 font-semibold text-center">2028 (DWC Expansion)</th>
+                  <th class="py-4 px-4 font-semibold text-center">2029 (Metro Blue Line)</th>
+                  <th class="py-4 px-6 font-semibold text-right">2030 (Handover Target)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/60 font-medium">
+                <!-- DAMAC Tahiti -->
+                <tr class="hover:bg-amber-500/5 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="font-cinzel font-bold text-sm text-amber-300">DAMAC Islands 2 (Tahiti 5BR)</div>
+                    <div class="text-[11px] text-slate-400">Entry net: <span data-currency-aed="3764160">AED 3.76M</span> ? 100% DLD Waived</div>
+                  </td>
+                  <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2026-tahiti">AED 3,764,160</td>
+                  <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2027-tahiti">AED 4,290,930</td>
+                  <td class="py-4 px-4 text-center font-bold text-amber-300" id="yr-2028-tahiti">AED 4,961,364</td>
+                  <td class="py-4 px-4 text-center font-bold text-emerald-400" id="yr-2029-tahiti">AED 5,631,798</td>
+                  <td class="py-4 px-6 text-right font-extrabold text-base text-amber-300" id="yr-2030-tahiti">AED 6,158,568</td>
+                </tr>
+
+                <!-- Tilal Binghatti -->
+                <tr class="hover:bg-emerald-500/5 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="font-cinzel font-bold text-sm text-emerald-300">Tilal Binghatti (4BR Villa)</div>
+                    <div class="text-[11px] text-slate-400">Entry: <span data-currency-aed="4540000">AED 4.54M</span> ? Handover Q2 2029</div>
+                  </td>
+                  <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2026-bing">AED 4,540,000</td>
+                  <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2027-bing">AED 4,731,465</td>
+                  <td class="py-4 px-4 text-center font-bold text-emerald-300" id="yr-2028-bing">AED 4,975,148</td>
+                  <td class="py-4 px-4 text-center font-extrabold text-emerald-400" id="yr-2029-bing">AED 5,218,830</td>
+                  <td class="py-4 px-6 text-right font-extrabold text-base text-emerald-300" id="yr-2030-bing">AED 5,410,295</td>
+                </tr>
+
+                <!-- Sobha Sanctuary -->
+                <tr class="hover:bg-purple-500/5 transition-colors">
+                  <td class="py-4 px-6">
+                    <div class="font-cinzel font-bold text-sm text-purple-300">Sobha Sanctuary (The Willows 4BR)</div>
+                    <div class="text-[11px] text-slate-400">Entry: <span data-currency-aed="4057383">AED 4.06M</span> ? Handover Aug 2030</div>
+                  </td>
+                  <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2026-sobha">AED 4,057,383</td>
+                  <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2027-sobha">AED 4,219,678</td>
+                  <td class="py-4 px-4 text-center font-bold text-purple-300" id="yr-2028-sobha">AED 4,426,236</td>
+                  <td class="py-4 px-4 text-center font-bold text-purple-300" id="yr-2029-sobha">AED 4,632,794</td>
+                  <td class="py-4 px-6 text-right font-extrabold text-base text-purple-300" id="yr-2030-sobha">AED 4,795,089</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile Cards View for Small Screens -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:hidden mt-6">
+            <!-- Mobile Tahiti -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/30 space-y-3">
+              <div class="border-b border-slate-800 pb-2">
+                <span class="text-[10px] text-amber-400 font-bold uppercase">DAMAC Islands 2</span>
+                <h4 class="font-cinzel text-base font-bold text-white">Tahiti 5BR End Unit</h4>
+              </div>
+              <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-slate-400">2026 (Entry):</span><span class="font-bold text-slate-200">AED 3,764,160</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="font-bold text-slate-200">AED 4,290,930</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="font-bold text-amber-300">AED 4,961,364</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2029:</span><span class="font-bold text-emerald-400">AED 5,631,798</span></div>
+                <div class="flex justify-between pt-1 border-t border-slate-800"><span class="text-amber-400 font-bold">2030 (Exit):</span><span class="font-extrabold text-amber-300">AED 6,158,568</span></div>
+              </div>
+            </div>
+
+            <!-- Mobile Binghatti -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/30 space-y-3">
+              <div class="border-b border-slate-800 pb-2">
+                <span class="text-[10px] text-emerald-400 font-bold uppercase">Tilal Binghatti</span>
+                <h4 class="font-cinzel text-base font-bold text-white">4BR Independent Villa</h4>
+              </div>
+              <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-slate-400">2026 (Entry):</span><span class="font-bold text-slate-200">AED 4,540,000</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="font-bold text-slate-200">AED 4,731,465</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="font-bold text-emerald-300">AED 4,975,148</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2029 (Handover):</span><span class="font-extrabold text-emerald-400">AED 5,218,830</span></div>
+                <div class="flex justify-between pt-1 border-t border-slate-800"><span class="text-emerald-400 font-bold">2030 (Matured):</span><span class="font-extrabold text-emerald-300">AED 5,410,295</span></div>
+              </div>
+            </div>
+
+            <!-- Mobile Sobha -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-purple-500/30 space-y-3">
+              <div class="border-b border-slate-800 pb-2">
+                <span class="text-[10px] text-purple-400 font-bold uppercase">Sobha Sanctuary</span>
+                <h4 class="font-cinzel text-base font-bold text-white">The Willows 4BR</h4>
+              </div>
+              <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-slate-400">2026 (Entry):</span><span class="font-bold text-slate-200">AED 4,057,383</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="font-bold text-slate-200">AED 4,219,678</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="font-bold text-purple-300">AED 4,426,236</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">2029:</span><span class="font-bold text-purple-300">AED 4,632,794</span></div>
+                <div class="flex justify-between pt-1 border-t border-slate-800"><span class="text-purple-400 font-bold">2030 (Exit):</span><span class="font-extrabold text-purple-300">AED 4,795,089</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Catalysts Footnote -->
+          <div class="mt-6 p-4 rounded-xl bg-slate-900/50 border border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-400 gap-3">
+            <div class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span><strong>2026:</strong> Off-plan entry baseline</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span><strong>2027:</strong> Emaar The Oasis villas launch (+22%)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span><strong>2028:</strong> Al Maktoum Airport & Expo Center build-out (+50%)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span><strong>2029:</strong> Metro Blue Line operational & Tilal Binghatti delivery (+78%)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span><strong>2030:</strong> Lagoon community completion (100% target)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 

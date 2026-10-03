@@ -164,3 +164,29 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(223, 183, 116, 0.45);
 }
+/* Drawer & Modal Transitions */
+#side-drawer {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#side-drawer.drawer-open {
+  transform: translateX(0);
+}
+
+#side-drawer.drawer-closed {
+  transform: translateX(100%);
+}
+
+#drawer-backdrop {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#drawer-backdrop.backdrop-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#drawer-backdrop.backdrop-closed {
+  opacity: 0;
+  pointer-events: none;
+}
