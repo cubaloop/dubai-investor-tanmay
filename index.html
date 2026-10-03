@@ -1,0 +1,1040 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dubai Townhouse Investment Advisory | Exclusively Prepared for Tanmay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { 300: '#f3dfba', 400: '#dfb774', 500: '#c89d53', 600: '#9c7b44' },
+            obsidian: { 900: '#08090d', 800: '#0f141f', 700: '#161c2b' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#08090d] text-slate-100 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+
+  <div class="atmospheric-bg"></div>
+  <div class="mesh-overlay"></div>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full border border-amber-400/40 flex items-center justify-center bg-amber-500/10">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-cinzel text-sm sm:text-base font-bold tracking-wider text-amber-200">DUBAI PRIVATE ADVISORY</span>
+              <span class="px-2 py-0.5 text-[10px] uppercase tracking-widest font-semibold rounded vip-badge">For Tanmay</span>
+            </div>
+            <p class="text-[11px] text-slate-400 tracking-wider hidden sm:block">US Investor Portfolio Expansion • Dubai Townhouse Segment</p>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-7 text-xs uppercase tracking-widest text-slate-300 font-medium">
+          <a href="#verdict" class="hover:text-amber-400 transition-colors">Verdict</a>
+          <a href="#market-map" class="hover:text-amber-400 transition-colors">Market Map</a>
+          <a href="#comparison" class="hover:text-amber-400 transition-colors">3-Way Matrix</a>
+          <a href="#simulator" class="hover:text-amber-400 transition-colors">ROI Simulator</a>
+          <a href="#catalysts" class="hover:text-amber-400 transition-colors">Price Catalysts</a>
+          <a href="#portfolio" class="hover:text-amber-400 transition-colors">Portfolio Synergy</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center p-1 rounded-full bg-slate-900/90 border border-slate-700/60 text-xs">
+            <button id="btn-currency-aed" class="px-3 py-1 rounded-full font-semibold transition-all bg-amber-500/20 text-amber-300 border border-amber-500/40">AED</button>
+            <button id="btn-currency-usd" class="px-3 py-1 rounded-full font-semibold transition-all text-slate-400 hover:text-slate-200">USD</button>
+          </div>
+
+          <!-- WhatsApp Button: STRICT RULE: ONLY ICON, NO TEXT -->
+          <a href="https://wa.me/971500000000?text=Hi%20Tanmay%2C%20I%20have%20reviewed%20the%20Dubai%20Townhouse%20Analysis" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="WhatsApp Advisory Direct"
+             class="w-10 h-10 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center transition-all hover:scale-105 shadow-lg shadow-emerald-500/20">
+            <svg class="w-5 h-5 text-emerald-400 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+﻿  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full vip-badge mb-6 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="text-xs uppercase tracking-widest font-semibold">Strategic Portfolio Advisory • Exclusively for Tanmay</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+            Capitalizing on Dubai’s <br>
+            <span class="gold-gradient-text">Townhouse Expansion</span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+            Tanmay, following your high-performing acquisition of the 1-bedroom residence in <strong class="text-amber-300 font-medium">DAMAC Chelsea</strong>, this comparative advisory models your next strategic move: capturing massive equity appreciation in Dubai’s prime southern growth corridor before handovers in <span class="text-slate-100 font-medium">2029–2030</span>.
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            <div class="glass-panel p-3.5 rounded-xl border border-amber-500/20">
+              <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold block">Max Profit Arbitrage</span>
+              <span class="text-base sm:text-lg font-bold text-white tracking-tight">DAMAC Islands 2</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5">Entry: 1,241 AED/sqft</span>
+            </div>
+            <div class="glass-panel p-3.5 rounded-xl border border-emerald-500/20">
+              <span class="text-[10px] uppercase tracking-wider text-emerald-400 font-semibold block">Fastest Flip / Exit</span>
+              <span class="text-base sm:text-lg font-bold text-white tracking-tight">Tilal Binghatti</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5">Q2 2029 Handover</span>
+            </div>
+            <div class="glass-panel p-3.5 rounded-xl border border-purple-500/20">
+              <span class="text-[10px] uppercase tracking-wider text-purple-400 font-semibold block">Supreme Quality</span>
+              <span class="text-base sm:text-lg font-bold text-white tracking-tight">Sobha Sanctuary</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5">50% Biofilic Nature</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <a href="#verdict" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 text-slate-950 font-bold text-xs uppercase tracking-widest shadow-xl shadow-amber-500/20 hover:scale-[1.02] transition-transform">
+              View Executive Verdict
+            </a>
+            <a href="#simulator" class="px-6 py-3.5 rounded-xl glass-panel border border-slate-700 hover:border-amber-400/40 text-slate-200 font-semibold text-xs uppercase tracking-widest transition-all">
+              Interactive ROI Simulator
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="glass-panel-gold rounded-2xl p-2.5 relative group overflow-hidden">
+            <div class="aspect-[16/10] sm:aspect-[4/3] rounded-xl overflow-hidden relative">
+              <img src="assets/damac_hero.png" alt="Dubai Islands Luxury Masterplan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <div>
+                  <span class="px-2.5 py-1 rounded bg-amber-500/80 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider">PropertyMonitor Corroborated</span>
+                  <h3 class="text-white font-cinzel font-bold text-lg mt-1">Prime 5BR Corridor Benchmark</h3>
+                  <p class="text-xs text-slate-300">September 2026 Primary Market Data</p>
+                </div>
+                <button onclick="openImageModal('assets/market_positioning_map.jpg', '5BR Townhouse Market Positioning - PropertyMonitor')" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-colors" title="Zoom Market Map">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 1: THE EXECUTIVE VERDICT -->
+  <section id="verdict" class="py-20 relative border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Strategic Investor Takeaways</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Executive Investment Verdict</h2>
+        <p class="text-slate-400 text-sm mt-3">Tailored answering Tanmay’s core criteria: Max Profit, Fast Exit, and Surrounding Catalysts.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Verdict 1: Max Profit & ROI -->
+        <div class="glass-panel p-8 rounded-2xl relative border-t-2 border-amber-400/80 hover:border-amber-400 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <span class="text-[11px] font-bold tracking-widest uppercase text-amber-400">1. Highest Absolute Profit & ROI</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-3">DAMAC Islands 2 (Tahiti 5BR)</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Entry pricing at <strong class="text-amber-300" data-sqft-rate-aed="1241.5">1,241 AED/sq.ft</strong> provides the largest arbitrage gap in Dubai. With adjacent luxury master communities like <span class="text-white">The Oasis (AED 2,065)</span> and <span class="text-white">The Acres (AED 1,977)</span> pulling area valuations upward, an exit at handover at AED 1,950/sq.ft generates:
+          </p>
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-amber-500/20 space-y-1.5 mb-4">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Projected Net Gain:</span>
+              <span class="text-emerald-400 font-bold" data-currency-aed="2237568">+AED 2,237,568</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Cash-on-Cash Return:</span>
+              <span class="text-amber-300 font-extrabold">+114.1%</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Equity Paid to Handover:</span>
+              <span class="text-slate-200" data-currency-aed="1960500">50% (AED 1,960,500)</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400">Ideal for Tanmay to maximize capital multiple on invested cash through 2030.</p>
+        </div>
+
+        <!-- Verdict 2: Fastest Flip & Speed -->
+        <div class="glass-panel p-8 rounded-2xl relative border-t-2 border-emerald-400/80 hover:border-emerald-400 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-400/30 flex items-center justify-center text-emerald-400 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <span class="text-[11px] font-bold tracking-widest uppercase text-emerald-400">2. Fastest Capital Turnaround</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-3">Tilal Binghatti (4BR Villa)</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Binghatti is renowned for the fastest delivery timelines in Dubai. With delivery scheduled for <strong class="text-emerald-300">Q2 2029</strong> (over a year ahead of DAMAC & Sobha), this property allows an early secondary market resale (flip):
+          </p>
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-emerald-500/20 space-y-1.5 mb-4">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Handover Year:</span>
+              <span class="text-emerald-300 font-bold">Mid 2029 (Fastest)</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Flip Threshold Reached:</span>
+              <span class="text-slate-200">Late 2027 (34% paid)</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Projected Flip Gain (2028):</span>
+              <span class="text-emerald-400 font-bold" data-currency-aed="900000">+AED 900,000+</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400">Best if Tanmay wants liquidity recycled back into US or Dubai investments before 2030.</p>
+        </div>
+
+        <!-- Verdict 3: Long-term Prestige & Wealth Defense -->
+        <div class="glass-panel p-8 rounded-2xl relative border-t-2 border-purple-400/80 hover:border-purple-400 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-400/30 flex items-center justify-center text-purple-400 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="text-[11px] font-bold tracking-widest uppercase text-purple-400">3. Sovereign Quality & Yield</span>
+          <h3 class="font-cinzel text-xl font-bold text-white mt-1 mb-3">Sobha Sanctuary (The Willows)</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Sobha’s backward-integrated German engineering guarantees zero-defect handover. Set in a 37.5M sq.ft biophilic forest with 50,000+ trees and 50% open green space, it attracts ultra-high-income expatriate tenants:
+          </p>
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-purple-500/20 space-y-1.5 mb-4">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Expected Rental Yield:</span>
+              <span class="text-purple-300 font-bold">8.2% – 8.8% Net</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">DLD Waiver Status:</span>
+              <span class="text-emerald-400 font-bold">Requested (Saves AED 163K)</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Handover Balance:</span>
+              <span class="text-slate-200">60% on Handover (Aug 2030)</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400">Top choice if Tanmay seeks a blue-chip trophy villa with pristine long-term value retention.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+﻿  <!-- SECTION 2: OFFICIAL PROPERTYMONITOR MARKET POSITIONING MAP -->
+  <section id="market-map" class="py-20 relative bg-slate-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-panel-gold rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold">
+              <span>Primary Transaction Index (September 2026)</span>
+            </div>
+
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-bold leading-tight">
+              5BR Townhouse <br>
+              <span class="gold-gradient-text">Market Positioning Map</span>
+            </h2>
+
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Official data from <strong class="text-white">PropertyMonitor</strong> confirms the pricing landscape across Dubai’s southern growth corridor. While mature and adjacent master plans trade between <strong class="text-amber-300">1,736 and 2,535 AED/sq.ft</strong>, DAMAC Islands represents an entry floor with substantial room for market convergence:
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80">
+                <span class="text-[10px] text-slate-400 block uppercase">DAMAC Islands 2</span>
+                <span class="text-base font-bold text-amber-300" data-sqft-rate-aed="1246">1,246 AED/sq.ft</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80">
+                <span class="text-[10px] text-slate-400 block uppercase">Sobha Sanctuary</span>
+                <span class="text-base font-bold text-purple-300" data-sqft-rate-aed="1736">1,736 AED/sq.ft</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80">
+                <span class="text-[10px] text-slate-400 block uppercase">Tilal Binghatti</span>
+                <span class="text-base font-bold text-emerald-300" data-sqft-rate-aed="1759">1,759 AED/sq.ft</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80">
+                <span class="text-[10px] text-slate-400 block uppercase">Athlon (Aldar)</span>
+                <span class="text-base font-bold text-slate-200" data-sqft-rate-aed="1777">1,777 AED/sq.ft</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80">
+                <span class="text-[10px] text-slate-400 block uppercase">The Acres (Meraas)</span>
+                <span class="text-base font-bold text-slate-200" data-sqft-rate-aed="1977">1,977 AED/sq.ft</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-amber-500/40 bg-amber-500/10">
+                <span class="text-[10px] text-amber-300 block uppercase">The Oasis (Emaar)</span>
+                <span class="text-base font-bold text-amber-400" data-sqft-rate-aed="2065">2,065 AED/sq.ft</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-slate-300">
+              <strong class="text-amber-300">Investor Takeaway for Tanmay:</strong> Purchasing at 1,241–1,332 AED/sq.ft in DAMAC Islands guarantees an immediate <strong class="text-emerald-400">+35% to +60% re-rating potential</strong> as the corridor infrastructure reaches full parity with neighboring Emaar and Meraas projects.
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="relative rounded-2xl overflow-hidden border border-amber-500/30 group cursor-pointer shadow-2xl" onclick="openImageModal('assets/market_positioning_map.jpg', '5BR Townhouse Market Positioning - PropertyMonitor (Sep 2026)')">
+              <img src="assets/market_positioning_map.jpg" alt="PropertyMonitor Map Dubai 5BR Townhouse" class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xs text-white font-medium">Click to inspect map in high-res</span>
+                  <span class="p-1.5 rounded bg-white/20 text-white backdrop-blur-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: 3-WAY COMPARISON MATRIX -->
+  <section id="comparison" class="py-20 relative border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Head-to-Head Specification</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Comprehensive Property Matrix</h2>
+        <p class="text-slate-400 text-sm mt-3">Side-by-side analysis of units, pricing, payment terms, and delivery milestones.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- CARD 1: DAMAC ISLANDS 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-amber-500/30 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="assets/damac_lagoon.jpg" alt="DAMAC Islands 2 Tahiti" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-amber-500/90 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider">Top Profit Driver</span>
+              <span class="absolute bottom-3 left-3 text-xs text-white font-semibold">Unit: A126X10 (Tahiti 2)</span>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div>
+                <span class="text-[10px] text-amber-400 uppercase tracking-widest font-bold">DAMAC Properties</span>
+                <h3 class="font-cinzel text-2xl font-bold text-white">DAMAC Islands 2</h3>
+                <p class="text-xs text-slate-300">5 BR Townhouse End Unit (DSTH-E)</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/20">
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs text-slate-400">Total Purchase:</span>
+                  <span class="text-xl font-extrabold text-amber-300" data-currency-aed="3921000">AED 3,921,000</span>
+                </div>
+                <div class="flex justify-between items-baseline mt-1 text-xs">
+                  <span class="text-slate-400">Rate per sq.ft:</span>
+                  <span class="text-emerald-400 font-bold" data-sqft-rate-aed="1241.51">1,241 AED/sq.ft</span>
+                </div>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Saleable Area:</span>
+                  <span class="text-white font-medium">3,158.24 sq.ft</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Plot Area:</span>
+                  <span class="text-white font-medium">2,363.75 sq.ft (Corner)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Deposit (Immediate):</span>
+                  <span class="text-white font-medium" data-currency-aed="784200">20% (AED 784,200)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Construction Terms:</span>
+                  <span class="text-slate-200">0.75% monthly (low cash drag)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Balance on Handover:</span>
+                  <span class="text-amber-300 font-bold" data-currency-aed="1960500">50% (AED 1,960,500)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Completion Date:</span>
+                  <span class="text-white font-semibold">June 30, 2030</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-slate-400">DLD Fees (4%):</span>
+                  <span class="text-slate-300" data-currency-aed="156840">AED 156,840</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openImageModal('assets/damac_tahiti_unitplan.png', 'DAMAC Tahiti 5BR Floorplan - Unit A126X10')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold uppercase tracking-wider text-amber-200 transition-colors flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span>View Floor & Plot Plan</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 2: TILAL BINGHATTI -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-emerald-500/30 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="assets/binghatti_villa_render.jpg" alt="Tilal Binghatti 4BR Villa" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-emerald-500/90 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider">Fastest Delivery (2029)</span>
+              <span class="absolute bottom-3 left-3 text-xs text-white font-semibold">Unit: TB-P3-R-CL54-T-6</span>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div>
+                <span class="text-[10px] text-emerald-400 uppercase tracking-widest font-bold">Binghatti Developers</span>
+                <h3 class="font-cinzel text-2xl font-bold text-white">Tilal Binghatti</h3>
+                <p class="text-xs text-slate-300">4 BR Independent Villa</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/20">
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs text-slate-400">Total Purchase:</span>
+                  <span class="text-xl font-extrabold text-emerald-300" data-currency-aed="4540000">AED 4,540,000</span>
+                </div>
+                <div class="flex justify-between items-baseline mt-1 text-xs">
+                  <span class="text-slate-400">Rate per sq.ft:</span>
+                  <span class="text-slate-200 font-bold" data-sqft-rate-aed="1636.32">1,636 AED/sq.ft</span>
+                </div>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Built-Up Area:</span>
+                  <span class="text-white font-medium">2,774.51 sq.ft</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Plot Area:</span>
+                  <span class="text-white font-medium">1,734.44 sq.ft</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Down Payment (Booking):</span>
+                  <span class="text-white font-medium" data-currency-aed="454000">10% (AED 454,000)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Monthly Terms:</span>
+                  <span class="text-slate-200">2% in 2027, 1% in 2028</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Balance on Handover:</span>
+                  <span class="text-emerald-300 font-bold" data-currency-aed="2270000">50% (AED 2,270,000)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Completion Date:</span>
+                  <span class="text-emerald-400 font-semibold">Q2 2029 (Earliest)</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-slate-400">DLD Fees (4%):</span>
+                  <span class="text-slate-300" data-currency-aed="181600">AED 181,600</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openImageModal('assets/binghatti_page_3.png', 'Tilal Binghatti 4BR Villa Offer & Specs')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold uppercase tracking-wider text-emerald-200 transition-colors flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span>View Official Offer Sheet</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: SOBHA SANCTUARY -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-purple-500/30 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="assets/sobha_villa_facade.jpg" alt="Sobha Sanctuary The Willows" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-purple-500/90 text-white text-[10px] font-extrabold uppercase tracking-wider">Supreme German Build</span>
+              <span class="absolute bottom-3 left-3 text-xs text-white font-semibold">Unit: TWL-GV-659 (Type B)</span>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div>
+                <span class="text-[10px] text-purple-400 uppercase tracking-widest font-bold">Sobha Realty</span>
+                <h3 class="font-cinzel text-2xl font-bold text-white">Sobha Sanctuary</h3>
+                <p class="text-xs text-slate-300">4 BR Middle Garden Villa</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/90 border border-purple-500/20">
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs text-slate-400">Total Purchase:</span>
+                  <span class="text-xl font-extrabold text-purple-300" data-currency-aed="4057383">AED 4,057,383</span>
+                </div>
+                <div class="flex justify-between items-baseline mt-1 text-xs">
+                  <span class="text-slate-400">Rate per sq.ft:</span>
+                  <span class="text-slate-200 font-bold" data-sqft-rate-aed="1650">1,650 AED/sq.ft</span>
+                </div>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Saleable Area:</span>
+                  <span class="text-white font-medium">2,459.02 sq.ft</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Plot Area:</span>
+                  <span class="text-white font-medium">1,870.34 sq.ft</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Negotiated Down:</span>
+                  <span class="text-white font-medium" data-currency-aed="81148">2% to reserve (AED 81,148)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Payment in 24 Mos:</span>
+                  <span class="text-slate-200">20% structured installments</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Balance on Handover:</span>
+                  <span class="text-purple-300 font-bold" data-currency-aed="2434430">60% (AED 2,434,430)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-800">
+                  <span class="text-slate-400">Completion Date:</span>
+                  <span class="text-white font-semibold">August 2030</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-slate-400">DLD Fees (4%):</span>
+                  <span class="text-emerald-400 font-bold">Waiver in Progress (0%)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openImageModal('assets/sobha_floorplan.png', 'Sobha Sanctuary The Willows 4BR Garden Villa Floorplan')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold uppercase tracking-wider text-purple-200 transition-colors flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span>View Architectural Floorplan</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+﻿  <!-- SECTION 4: INTERACTIVE OPTIMISTIC VALUATION & ROI SIMULATOR -->
+  <section id="simulator" class="py-20 relative bg-slate-950/60 border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Live Financial Engine</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Interactive Optimistic ROI Simulator</h2>
+        <p class="text-slate-400 text-sm mt-3">Adjust the market appreciation slider to model optimistic capital gains and cash-on-cash multiples at handover.</p>
+      </div>
+
+      <div class="glass-panel-gold rounded-3xl p-6 sm:p-10 mb-12">
+        
+        <div class="max-w-2xl mx-auto text-center space-y-4 mb-10">
+          <label class="text-xs font-semibold uppercase tracking-wider text-slate-300 block">
+            Target Secondary Market Price at Handover (AED / sq.ft):
+          </label>
+          <div class="flex items-center justify-center space-x-4">
+            <span class="text-xs text-slate-400">1,500 AED/sq.ft</span>
+            <input type="range" id="slider-exit-sqft" min="1500" max="2500" step="25" value="1950" class="w-full max-w-md h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+            <span class="text-xs text-slate-400">2,500 AED/sq.ft</span>
+          </div>
+          <div class="text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 font-cinzel text-lg font-bold" id="slider-sqft-val">
+              1,950 AED/sq.ft
+            </span>
+            <span class="text-xs text-slate-400 block mt-1">(Context: The Oasis currently sells at 2,065 AED/sq.ft; Acres at 1,977)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Result 1 -->
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-amber-500/30 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">DAMAC Islands 2</span>
+                <h4 class="font-cinzel text-lg font-bold text-white">Tahiti 5BR End Unit</h4>
+                <p class="text-xs text-slate-400">Initial: <span data-currency-aed="3921000">AED 3.92M</span> (1,241/sqft)</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Max Gain</span>
+            </div>
+
+            <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Projected Value:</span>
+                <span class="text-white font-bold text-sm" id="sim-tahiti-exit">AED 6,158,568</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Net Profit (Capital Gain):</span>
+                <span class="text-emerald-400 font-extrabold text-sm" id="sim-tahiti-profit">+AED 2,237,568</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Total Asset Appreciation:</span>
+                <span class="text-slate-200 font-semibold" id="sim-tahiti-roi">+57%</span>
+              </div>
+              <div class="flex justify-between py-1 bg-amber-500/10 px-2 rounded border border-amber-500/20">
+                <span class="text-amber-300 font-bold">Cash-on-Cash (Equity):</span>
+                <span class="text-amber-300 font-extrabold" id="sim-tahiti-coc">+114%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result 2 -->
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/30 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Binghatti Developers</span>
+                <h4 class="font-cinzel text-lg font-bold text-white">Tilal Binghatti 4BR</h4>
+                <p class="text-xs text-slate-400">Initial: <span data-currency-aed="4540000">AED 4.54M</span> (1,636/sqft)</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Fastest Exit</span>
+            </div>
+
+            <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Projected Value:</span>
+                <span class="text-white font-bold text-sm" id="sim-binghatti-exit">AED 5,410,295</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Net Profit (Capital Gain):</span>
+                <span class="text-emerald-400 font-extrabold text-sm" id="sim-binghatti-profit">+AED 870,295</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Total Asset Appreciation:</span>
+                <span class="text-slate-200 font-semibold" id="sim-binghatti-roi">+19%</span>
+              </div>
+              <div class="flex justify-between py-1 bg-emerald-500/10 px-2 rounded border border-emerald-500/20">
+                <span class="text-emerald-300 font-bold">Cash-on-Cash (Equity):</span>
+                <span class="text-emerald-300 font-extrabold" id="sim-binghatti-coc">+38%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result 3 -->
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-purple-500/30 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider">Sobha Realty</span>
+                <h4 class="font-cinzel text-lg font-bold text-white">The Willows 4BR</h4>
+                <p class="text-xs text-slate-400">Initial: <span data-currency-aed="4057383">AED 4.06M</span> (1,650/sqft)</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">Prime Quality</span>
+            </div>
+
+            <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Projected Value:</span>
+                <span class="text-white font-bold text-sm" id="sim-sobha-exit">AED 4,795,089</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Net Profit (Capital Gain):</span>
+                <span class="text-emerald-400 font-extrabold text-sm" id="sim-sobha-profit">+AED 737,706</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Total Asset Appreciation:</span>
+                <span class="text-slate-200 font-semibold" id="sim-sobha-roi">+18%</span>
+              </div>
+              <div class="flex justify-between py-1 bg-purple-500/10 px-2 rounded border border-purple-500/20">
+                <span class="text-purple-300 font-bold">Cash-on-Cash (Equity):</span>
+                <span class="text-purple-300 font-extrabold" id="sim-sobha-coc">+45%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5: SURROUNDING INFRASTRUCTURE & PRICE PEAK CATALYSTS -->
+  <section id="catalysts" class="py-20 relative border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Macro Drivers (2026 - 2030)</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Surrounding Price Catalyst Roadmap</h2>
+        <p class="text-slate-400 text-sm mt-3">Major government and mega-developer master projects completing before handovers that will drive exponential price surges.</p>
+      </div>
+
+      <div class="space-y-6">
+        
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border-l-4 border-amber-400 transition-all hover:bg-slate-900/60">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+            <div class="flex items-center space-x-3">
+              <span class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-white">Al Maktoum International Airport (DWC) Expansion</h3>
+                <span class="text-xs text-amber-400 font-medium">AED 128 Billion ($35B USD) Mega-Project</span>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold text-slate-300 self-start sm:self-auto">Phase 1: 2028–2030</span>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Approved by Sheikh Mohammed bin Rashid Al Maktoum, DWC will become the world's largest airport handling 260 million passengers (5x current DXB size). All operations will transition here. As the closest major residential townhouse corridor, DAMAC Islands 2 and southern communities will experience the highest historical uplift in Dubai’s real estate trajectory.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border-l-4 border-cyan-400 transition-all hover:bg-slate-900/60">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+            <div class="flex items-center space-x-3">
+              <span class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-white">Dubai Metro Blue Line Network Extension</h3>
+                <span class="text-xs text-cyan-400 font-medium">AED 18 Billion Direct Transit Arterial</span>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold text-slate-300 self-start sm:self-auto">Completion: 2029</span>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            The Blue Line connects Dubai International Academic City, Silicon Oasis, and the southern growth corridor directly to Downtown Dubai and DXB. Properties adjacent to newly inaugurated metro stations in Dubai historically appreciate between +20% and +28% within 18 months of line activation.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border-l-4 border-emerald-400 transition-all hover:bg-slate-900/60">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+            <div class="flex items-center space-x-3">
+              <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-white">Emaar The Oasis & Meraas The Acres Phase 1 Deliveries</h3>
+                <span class="text-xs text-emerald-400 font-medium">Billion-Dollar Luxury Benchmarks</span>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold text-slate-300 self-start sm:self-auto">Handover: 2027–2028</span>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Located directly opposite DAMAC Islands, Emaar’s flagship $20 Billion "The Oasis" community is already trading at 2,065 AED/sq.ft. As its initial lagoon phases deliver in 2027–2028, it establishes the permanent ultra-luxury benchmark for the entire micro-market, lifting DAMAC Islands 2 from its 1,241 AED/sq.ft launch price toward parity.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border-l-4 border-purple-400 transition-all hover:bg-slate-900/60">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+            <div class="flex items-center space-x-3">
+              <span class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-white">Dubai Exhibition Centre (DEC) Tripled Expansion</h3>
+                <span class="text-xs text-purple-400 font-medium">AED 10 Billion Expo City Global Hub</span>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold text-slate-300 self-start sm:self-auto">Opening: 2028</span>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            DEC expansion at Expo City will make it the largest indoor events venue in the region (180,000 m²). Hosting over 500 major global expos annually, this permanent economic engine guarantees massive corporate tenancy demand for villas located within a 15–20 minute drive.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+﻿  <!-- SECTION 6: DEVELOPER HISTORICAL TRACK RECORD -->
+  <section id="developers" class="py-20 relative bg-slate-950/40 border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Proven Capital Appreciation</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Developer Heritage & Track Record</h2>
+        <p class="text-slate-400 text-sm mt-3">Three master developers with flawless records of delivering extraordinary capital appreciation to off-plan investors.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="glass-panel p-8 rounded-2xl border border-amber-500/20 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-cinzel text-xl font-bold text-white">DAMAC Properties</h3>
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">+110% Historic Growth</span>
+          </div>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            The pioneer of themed mega-communities in Dubai. <strong class="text-white">DAMAC Hills 1</strong> transformed early buyers into multi-millionaires as golf-facing villas saw capital values double from AED 850/sq.ft to over AED 1,800/sq.ft. Similarly, early clusters in <strong class="text-white">DAMAC Lagoons</strong> launched at ~AED 1,000/sq.ft are now trading secondary at AED 1,850+ /sq.ft prior to handover.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1 text-xs">
+            <div class="flex justify-between text-slate-400">
+              <span>DAMAC Hills 1 Capital Growth:</span>
+              <span class="text-emerald-400 font-bold">+110%</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>DAMAC Lagoons Secondary Lift:</span>
+              <span class="text-emerald-400 font-bold">+85%</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Tanmay Relationship:</span>
+              <span class="text-amber-300 font-semibold">DAMAC Chelsea Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl border border-emerald-500/20 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-cinzel text-xl font-bold text-white">Binghatti Developers</h3>
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Record Velocity</span>
+          </div>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Dubai's fastest-growing hyper-luxury brand. Renowned for world-first architectural collaborations with <strong class="text-white">Bugatti, Mercedes-Benz, and Jacob & Co</strong>. Binghatti has built an unshakeable reputation for beating handover deadlines by up to 6 months, generating rapid secondary trading liquidity and immediate investor cash turnover.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1 text-xs">
+            <div class="flex justify-between text-slate-400">
+              <span>On-Time/Early Delivery Rate:</span>
+              <span class="text-emerald-400 font-bold">100%</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Branded Luxury Leadership:</span>
+              <span class="text-white font-semibold">Bugatti / Mercedes</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Secondary Market Turnaround:</span>
+              <span class="text-emerald-300 font-semibold">Under 18 Months</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl border border-purple-500/20 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-cinzel text-xl font-bold text-white">Sobha Realty</h3>
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">Gold Standard Quality</span>
+          </div>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Internationally revered as the highest quality developer in the GCC. With 100% backward integration (in-house design, German joinery, concrete, and MEP), Sobha projects have zero structural defects. <strong class="text-white">Sobha Hartland</strong> delivered +75% to +95% capital appreciation, consistently commanding Dubai’s lowest vacancy rates and highest rental premiums.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1 text-xs">
+            <div class="flex justify-between text-slate-400">
+              <span>Sobha Hartland Revalorization:</span>
+              <span class="text-emerald-400 font-bold">+85%</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Construction Defect Snagging:</span>
+              <span class="text-purple-300 font-semibold">Virtually Zero</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Secondary Value Retention:</span>
+              <span class="text-white font-semibold">Top 1% in UAE</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 7: TANMAY'S PORTFOLIO DIVERSIFICATION BLUEPRINT -->
+  <section id="portfolio" class="py-20 relative border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-panel-gold rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+        <div class="max-w-3xl mb-10">
+          <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Strategic Portfolio Synergy</span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-2">Tanmay’s Dubai Wealth Architecture</h2>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+            By pairing your high-yielding urban apartment in <strong class="text-amber-300">DAMAC Chelsea</strong> with a prime masterplan townhouse, you create a synchronized dual-engine portfolio combining cash-flow liquidity with explosive capital compounding.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-4">
+            <div class="flex items-center space-x-3">
+              <span class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </span>
+              <div>
+                <span class="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Cornerstone Asset #1</span>
+                <h3 class="text-lg font-bold text-white">DAMAC Chelsea (1-Bedroom)</h3>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Prime urban core residential asset. Characterized by high tenant density, continuous rental yield (7.5% - 8.5%), and instant liquidity in Dubai’s bustling central district.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-xs pt-2">
+              <div class="p-2.5 rounded bg-slate-800/80">
+                <span class="text-slate-400 block text-[10px]">Primary Function</span>
+                <span class="text-blue-300 font-semibold">Yield & Cash Liquidity</span>
+              </div>
+              <div class="p-2.5 rounded bg-slate-800/80">
+                <span class="text-slate-400 block text-[10px]">Market Segment</span>
+                <span class="text-white font-semibold">Urban Apartment</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-amber-500/30 space-y-4">
+            <div class="flex items-center space-x-3">
+              <span class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+              </span>
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Growth Engine Asset #2</span>
+                <h3 class="text-lg font-bold text-white">Suburban Townhouse / Villa</h3>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Expansive family residence in the emerging South/East master community corridor. Anchored by the world's largest airport expansion (DWC) and lagoon eco-living for maximum capital multiple.
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-xs pt-2">
+              <div class="p-2.5 rounded bg-amber-500/10 border border-amber-500/20">
+                <span class="text-amber-400 block text-[10px]">Primary Function</span>
+                <span class="text-amber-300 font-semibold">Max Capital Appreciation</span>
+              </div>
+              <div class="p-2.5 rounded bg-slate-800/80">
+                <span class="text-slate-400 block text-[10px]">Target Multiple</span>
+                <span class="text-emerald-400 font-bold">+110% to +140% CoC</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 8: BLUEPRINT & OFFICIAL DOCUMENT GALLERY -->
+  <section id="blueprints" class="py-20 relative bg-slate-950/40 border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Architectural Verification</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Official Blueprints & Unit Plans</h2>
+        <p class="text-slate-400 text-sm mt-3">High-resolution layout drawings and developer offers extracted directly from documentation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-panel rounded-xl overflow-hidden border border-slate-800 hover:border-amber-400/50 transition-all cursor-pointer group" onclick="openImageModal('assets/damac_tahiti_unitplan.png', 'DAMAC Islands 2 - Tahiti 5BR End Unit Plan (3,158 sq.ft)')">
+          <div class="aspect-[3/4] overflow-hidden bg-white/5 p-2">
+            <img src="assets/damac_tahiti_unitplan.png" alt="DAMAC Tahiti Plan" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-4 border-t border-slate-800">
+            <span class="text-[10px] text-amber-400 font-semibold block uppercase">DAMAC Islands 2</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">Tahiti 5BR End Unit Plan</h4>
+            <span class="text-xs text-slate-400">3 Levels • 3,158 sq.ft</span>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-xl overflow-hidden border border-slate-800 hover:border-amber-400/50 transition-all cursor-pointer group" onclick="openImageModal('assets/damac_antigua_unitplan.png', 'DAMAC Islands 2 - Antigua 4BR Mid Unit Plan (2,185 sq.ft)')">
+          <div class="aspect-[3/4] overflow-hidden bg-white/5 p-2">
+            <img src="assets/damac_antigua_unitplan.png" alt="DAMAC Antigua Plan" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-4 border-t border-slate-800">
+            <span class="text-[10px] text-amber-400 font-semibold block uppercase">DAMAC Islands 2</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">Antigua 4BR Mid Unit Plan</h4>
+            <span class="text-xs text-slate-400">2 Levels • 2,185 sq.ft</span>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-xl overflow-hidden border border-slate-800 hover:border-purple-400/50 transition-all cursor-pointer group" onclick="openImageModal('assets/sobha_floorplan.png', 'Sobha Sanctuary - The Willows 4BR Garden Villa Floorplan')">
+          <div class="aspect-[3/4] overflow-hidden bg-white/5 p-2">
+            <img src="assets/sobha_floorplan.png" alt="Sobha The Willows Plan" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-4 border-t border-slate-800">
+            <span class="text-[10px] text-purple-400 font-semibold block uppercase">Sobha Sanctuary</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">The Willows 4BR Type B</h4>
+            <span class="text-xs text-slate-400">Smart-Home • 2,459 sq.ft</span>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-xl overflow-hidden border border-slate-800 hover:border-emerald-400/50 transition-all cursor-pointer group" onclick="openImageModal('assets/binghatti_page_3.png', 'Tilal Binghatti - 4BR Villa Specifications & Architecture')">
+          <div class="aspect-[3/4] overflow-hidden bg-white/5 p-2">
+            <img src="assets/binghatti_page_3.png" alt="Tilal Binghatti Architecture" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-4 border-t border-slate-800">
+            <span class="text-[10px] text-emerald-400 font-semibold block uppercase">Binghatti Developers</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">Tilal Binghatti 4BR Villa</h4>
+            <span class="text-xs text-slate-400">Q2 2029 Delivery • 2,774 sq.ft</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-slate-800/80 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="flex items-center justify-center space-x-2">
+        <span class="font-cinzel text-base font-bold text-amber-300">DUBAI PRIVATE ADVISORY</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-xs uppercase tracking-widest text-slate-400">Prepared for Tanmay</span>
+      </div>
+      <p class="text-xs text-slate-500 max-w-xl mx-auto">
+        All financial figures, developer floor plans, and territorial valuations are derived directly from official contracts, DLD filings, and PropertyMonitor transactions as of September 2026.
+      </p>
+      <div class="text-[11px] text-slate-600">
+        © 2026 Private Wealth Advisory. All rights reserved. Confidential document.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for High-Res Blueprint and Map Inspection -->
+  <div id="image-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full max-h-[90vh] bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden flex flex-col">
+      <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+        <h3 id="modal-title" class="text-sm font-bold text-amber-300 font-cinzel">Visual Document Inspection</h3>
+        <button id="modal-close" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="flex-1 overflow-auto p-4 flex items-center justify-center bg-black/40">
+        <img id="modal-img" src="" alt="High-Res Inspection" class="max-h-[75vh] object-contain rounded-lg">
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON: STRICT RULE - ONLY THE ICON, NO TEXT -->
+  <a href="https://wa.me/971500000000?text=Hi%20Tanmay%2C%20let%27s%20discuss%20the%20Dubai%20Townhouse%20Comparison%20for%20your%20portfolio" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     aria-label="Direct WhatsApp Message"
+     class="whatsapp-float-btn">
+    <svg class="w-7 h-7 text-white fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>
