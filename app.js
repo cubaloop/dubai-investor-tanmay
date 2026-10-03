@@ -1,10 +1,36 @@
-﻿// Dubai Ultra-Luxury Investment Advisory - App Logic for Tanmay
+// Dubai Ultra-Luxury Investment Advisory - App Logic for Tanmay
 document.addEventListener('DOMContentLoaded', () => {
   // Global State
   const state = {
     currency: 'AED', // 'AED' or 'USD'
     usdRate: 3.6725,
-    targetPriceSqft: 1950, // default target exit price in AED/sqft at 2030
+    selectedYear: 2030, // 2026, 2027, 2028, 2029, 2030
+    growthScenario: 'moderate', // 'conservative' (8%), 'moderate' (11%), 'optimistic' (14%)
+    targetPriceSqft: 1950, // default target exit price at 2030
+  };
+
+  // Milestones per year
+  const yearMilestones = {
+    2026: {
+      tag: 'Off-Plan Launch & Entry Baseline',
+      desc: 'Initial booking at developer off-plan pricing. Minimum cash outlay with maximum future upside.'
+    },
+    2027: {
+      tag: 'Emaar The Oasis Groundbreaking & Access Corridors',
+      desc: 'Adjacent luxury mega-developments break ground. Area price benchmarks rise +15% to +22%.'
+    },
+    2028: {
+      tag: 'Al Maktoum Airport (DWC) Expansion & DEC Center',
+      desc: 'Global logistics and airport expansion shifts Dubai center of gravity south. Flip threshold unlocked.'
+    },
+    2029: {
+      tag: 'Metro Blue Line Operations & Tilal Binghatti Handover',
+      desc: 'Tilal Binghatti delivers keys in Q2 2029 (fastest exit). Direct metro connectivity goes live.'
+    },
+    2030: {
+      tag: 'Handover of DAMAC Islands 2 & Sobha Sanctuary',
+      desc: 'Lagoon master communities mature. Full capital appreciation and primary-to-secondary market premium realized.'
+    }
   };
 
   // Property Data (with DAMAC 4% direct discount + 100% DLD waiver)
@@ -16,42 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
       type: '5 BR Townhouse (End Unit)',
       unitNo: 'A126X10',
       saleableArea: 3158.24,
-      plotArea: 2363.75,
       grossPriceAED: 3921000,
       discountPct: 4,
-      discountAED: 156840,
       netPriceAED: 3764160,       // 3,921,000 - 4%
       priceSqftAED: 1191.85,      // 3,764,160 / 3158.24
-      dldWaiverPct: 100,          // 4% DLD Waived
-      dldSavingsAED: 156840,
-      totalIncentiveAED: 313680,  // Discount + DLD Waiver
-      depositPct: 20,
-      depositAED: 752832,         // 20% of net
-      completionEquityPct: 50,    // 50% paid until handover
-      handoverDate: 'June 2030',
-      handoverYear: 2030,
-    },
-    damacAntigua: {
-      id: 'damacAntigua',
-      name: 'DAMAC Islands 2 - Antigua 1',
-      developer: 'DAMAC Properties',
-      type: '4 BR Townhouse (Mid Unit)',
-      unitNo: 'C026X04',
-      saleableArea: 2185.50,
-      plotArea: 1550.00,
-      grossPriceAED: 3329000,
-      discountPct: 4,
-      discountAED: 133160,
-      netPriceAED: 3195840,
-      priceSqftAED: 1462.29,
       dldWaiverPct: 100,
-      dldSavingsAED: 133160,
-      totalIncentiveAED: 266320,
-      depositPct: 24,
-      depositAED: 767000,
-      completionEquityPct: 75,
-      handoverDate: 'Dec 2030',
-      handoverYear: 2030,
+      // Equity progression by year (% of net price paid)
+      equitySchedule: {
+        2026: 0.20, // 20% booking
+        2027: 0.29, // +9% (0.75%/month)
+        2028: 0.38, // +9%
+        2029: 0.50, // +12% milestone
+        2030: 0.50  // 50% paid pre-handover (50% balance on keys)
+      },
+      handoverYear: 2030
     },
     binghatti: {
       id: 'binghatti',
@@ -60,15 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
       type: '4 BR Villa',
       unitNo: 'TB-P3-R-CL54-T-6',
       saleableArea: 2774.51,
-      plotArea: 1734.44,
       grossPriceAED: 4540000,
       netPriceAED: 4540000,
       priceSqftAED: 1636.32,
-      depositAED: 454000,
-      depositPct: 10,
-      completionEquityPct: 50,
-      handoverDate: 'Q2 2029 (Fastest Delivery)',
-      handoverYear: 2029,
+      equitySchedule: {
+        2026: 0.10, // 10% booking
+        2027: 0.22, // 12% in 2027
+        2028: 0.34, // 12% in 2028
+        2029: 0.50, // 50% pre-handover (delivered Q2 2029)
+        2030: 1.00  // 100% paid (completed property)
+      },
+      handoverYear: 2029
     },
     sobha: {
       id: 'sobha',
@@ -77,19 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
       type: '4 BR Garden Villa (Type B)',
       unitNo: 'TWL-GV-659',
       saleableArea: 2459.02,
-      plotArea: 1870.34,
       grossPriceAED: 4057383,
       netPriceAED: 4057383,
       priceSqftAED: 1650.00,
-      depositAED: 811476.60,
-      depositPct: 20,
-      completionEquityPct: 40,
-      handoverDate: 'August 2030',
-      handoverYear: 2030,
+      equitySchedule: {
+        2026: 0.20, // 20% down
+        2027: 0.30, // +10%
+        2028: 0.40, // +10%
+        2029: 0.40, // pauses until handover
+        2030: 0.40  // 40% pre-handover (60% balance on keys)
+      },
+      handoverYear: 2030
     }
   };
 
-  // Format Helper
+  // Format Helpers
   function formatMoney(amountAED) {
     if (state.currency === 'USD') {
       const val = amountAED / state.usdRate;
@@ -139,74 +147,128 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateSimulator();
   }
 
-  // Simulator Calculations & Year-by-Year Projections
+  // Progress factors by year (intercalating market growth towards 2030 exit target)
+  const progressFactors = {
+    2026: 0.00, // baseline
+    2027: 0.22, // The Oasis launch
+    2028: 0.50, // DWC Airport expansion
+    2029: 0.78, // Metro Blue line & Binghatti handover
+    2030: 1.00  // Full masterplan delivery
+  };
+
+  // Main Simulator Engine
   function calculateSimulator() {
+    const yr = state.selectedYear;
     const targetSqft = state.targetPriceSqft;
+
+    // Update target sqft indicator
     const targetSqftEl = document.getElementById('slider-sqft-val');
     if (targetSqftEl) {
       targetSqftEl.textContent = formatSqftRate(targetSqft);
     }
 
-    // DAMAC Tahiti 5BR End Unit
-    const tahitiExitVal = properties.damacTahiti.saleableArea * targetSqft;
-    const tahitiProfit = tahitiExitVal - properties.damacTahiti.netPriceAED;
-    const tahitiROI = (tahitiProfit / properties.damacTahiti.netPriceAED) * 100;
-    const tahitiPaidEquity = properties.damacTahiti.netPriceAED * 0.50; // 50% paid until handover
-    const tahitiCashOnCash = (tahitiProfit / tahitiPaidEquity) * 100;
+    // Update active year displays
+    const displayYearEl = document.getElementById('active-sim-year');
+    if (displayYearEl) displayYearEl.textContent = yr;
 
-    // Tilal Binghatti 4BR
-    const bingExitVal = properties.binghatti.saleableArea * targetSqft;
-    const bingProfit = bingExitVal - properties.binghatti.netPriceAED;
-    const bingROI = (bingProfit / properties.binghatti.netPriceAED) * 100;
-    const bingPaidEquity = properties.binghatti.netPriceAED * 0.50;
-    const bingCashOnCash = (bingProfit / bingPaidEquity) * 100;
+    const milestoneTagEl = document.getElementById('active-milestone-tag');
+    const milestoneDescEl = document.getElementById('active-milestone-desc');
+    if (milestoneTagEl && yearMilestones[yr]) {
+      milestoneTagEl.textContent = `${yr} Catalyst: ${yearMilestones[yr].tag}`;
+    }
+    if (milestoneDescEl && yearMilestones[yr]) {
+      milestoneDescEl.textContent = yearMilestones[yr].desc;
+    }
 
-    // Sobha Sanctuary 4BR
-    const sobhaExitVal = properties.sobha.saleableArea * targetSqft;
-    const sobhaProfit = sobhaExitVal - properties.sobha.netPriceAED;
-    const sobhaROI = (sobhaProfit / properties.sobha.netPriceAED) * 100;
-    const sobhaPaidEquity = properties.sobha.netPriceAED * 0.40;
-    const sobhaCashOnCash = (sobhaProfit / sobhaPaidEquity) * 100;
+    // Update year pill buttons visual state
+    document.querySelectorAll('.btn-year-select').forEach(btn => {
+      const btnYr = parseInt(btn.getAttribute('data-year'));
+      if (btnYr === yr) {
+        btn.classList.add('bg-amber-500', 'text-slate-950', 'font-extrabold', 'shadow-lg');
+        btn.classList.remove('bg-slate-900', 'text-slate-300');
+      } else {
+        btn.classList.remove('bg-amber-500', 'text-slate-950', 'font-extrabold', 'shadow-lg');
+        btn.classList.add('bg-slate-900', 'text-slate-300');
+      }
+    });
 
-    // Update Overall Cards
-    updateCardMetrics('tahiti', tahitiExitVal, tahitiProfit, tahitiROI, tahitiCashOnCash);
-    updateCardMetrics('binghatti', bingExitVal, bingProfit, bingROI, bingCashOnCash);
-    updateCardMetrics('sobha', sobhaExitVal, sobhaProfit, sobhaROI, sobhaCashOnCash);
+    const factor = progressFactors[yr];
 
-    // Calculate Year-by-Year Valuation Trajectory (2026 - 2030)
-    updateYearlyTrajectory(targetSqft, tahitiExitVal, bingExitVal, sobhaExitVal);
+    // Compute for each property for the SELECTED year
+    // DAMAC Tahiti
+    const tahitiBase = properties.damacTahiti.netPriceAED;
+    const tahitiFinal = properties.damacTahiti.saleableArea * targetSqft;
+    const tahitiVal = tahitiBase + (tahitiFinal - tahitiBase) * factor;
+    const tahitiProfit = tahitiVal - tahitiBase;
+    const tahitiRate = tahitiVal / properties.damacTahiti.saleableArea;
+    const tahitiEquityPct = properties.damacTahiti.equitySchedule[yr];
+    const tahitiEquityAED = tahitiBase * tahitiEquityPct;
+    const tahitiCashOnCash = tahitiEquityAED > 0 ? (tahitiProfit / tahitiEquityAED) * 100 : 0;
+    const tahitiAssetGain = (tahitiProfit / tahitiBase) * 100;
+
+    // Binghatti
+    const bingBase = properties.binghatti.netPriceAED;
+    const bingFinal = properties.binghatti.saleableArea * targetSqft;
+    const bingVal = bingBase + (bingFinal - bingBase) * factor;
+    const bingProfit = bingVal - bingBase;
+    const bingRate = bingVal / properties.binghatti.saleableArea;
+    const bingEquityPct = properties.binghatti.equitySchedule[yr];
+    const bingEquityAED = bingBase * bingEquityPct;
+    const bingCashOnCash = bingEquityAED > 0 ? (bingProfit / bingEquityAED) * 100 : 0;
+    const bingAssetGain = (bingProfit / bingBase) * 100;
+
+    // Sobha
+    const sobhaBase = properties.sobha.netPriceAED;
+    const sobhaFinal = properties.sobha.saleableArea * targetSqft;
+    const sobhaVal = sobhaBase + (sobhaFinal - sobhaBase) * factor;
+    const sobhaProfit = sobhaVal - sobhaBase;
+    const sobhaRate = sobhaVal / properties.sobha.saleableArea;
+    const sobhaEquityPct = properties.sobha.equitySchedule[yr];
+    const sobhaEquityAED = sobhaBase * sobhaEquityPct;
+    const sobhaCashOnCash = sobhaEquityAED > 0 ? (sobhaProfit / sobhaEquityAED) * 100 : 0;
+    const sobhaAssetGain = (sobhaProfit / sobhaBase) * 100;
+
+    // Update Cards
+    updatePropertyCard('tahiti', tahitiVal, tahitiRate, tahitiProfit, tahitiAssetGain, tahitiCashOnCash, tahitiEquityAED, tahitiEquityPct, yr, 2030);
+    updatePropertyCard('binghatti', bingVal, bingRate, bingProfit, bingAssetGain, bingCashOnCash, bingEquityAED, bingEquityPct, yr, 2029);
+    updatePropertyCard('sobha', sobhaVal, sobhaRate, sobhaProfit, sobhaAssetGain, sobhaCashOnCash, sobhaEquityAED, sobhaEquityPct, yr, 2030);
+
+    // Update Bottom Full Trajectory Table (all years 2026-2030)
+    updateFullTrajectoryTable(targetSqft, tahitiFinal, bingFinal, sobhaFinal);
   }
 
-  function updateCardMetrics(key, exitVal, profit, roi, cashOnCash) {
-    const exitValEl = document.getElementById(`sim-${key}-exit`);
+  function updatePropertyCard(key, val, rate, profit, assetGain, coc, equityAED, equityPct, curYr, handoverYr) {
+    const valEl = document.getElementById(`sim-${key}-exit`);
+    const rateEl = document.getElementById(`sim-${key}-rate`);
     const profitEl = document.getElementById(`sim-${key}-profit`);
     const roiEl = document.getElementById(`sim-${key}-roi`);
     const cocEl = document.getElementById(`sim-${key}-coc`);
+    const equityEl = document.getElementById(`sim-${key}-equity`);
+    const statusEl = document.getElementById(`sim-${key}-status`);
 
-    if (exitValEl) exitValEl.textContent = formatMoney(exitVal);
-    if (profitEl) profitEl.textContent = '+' + formatMoney(profit);
-    if (roiEl) roiEl.textContent = '+' + Math.round(roi) + '%';
-    if (cocEl) cocEl.textContent = '+' + Math.round(cashOnCash) + '%';
+    if (valEl) valEl.textContent = formatMoney(val);
+    if (rateEl) rateEl.textContent = formatSqftRate(rate);
+    if (profitEl) profitEl.textContent = (profit >= 0 ? '+' : '') + formatMoney(profit);
+    if (roiEl) roiEl.textContent = '+' + Math.round(assetGain) + '%';
+    if (cocEl) cocEl.textContent = '+' + Math.round(coc) + '%';
+    if (equityEl) equityEl.textContent = `${formatMoney(equityAED)} (${Math.round(equityPct * 100)}%)`;
+
+    if (statusEl) {
+      if (curYr < handoverYr) {
+        statusEl.textContent = `Under Construction (${curYr})`;
+        statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+      } else if (curYr === handoverYr) {
+        statusEl.textContent = `Handover Year (${curYr})`;
+        statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+      } else {
+        statusEl.textContent = `Post-Handover / Matured`;
+        statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
+      }
+    }
   }
 
-  // Yearly Growth Curve Engine
-  function updateYearlyTrajectory(targetSqft, tahitiFinal, bingFinal, sobhaFinal) {
+  function updateFullTrajectoryTable(targetSqft, tahitiFinal, bingFinal, sobhaFinal) {
     const years = [2026, 2027, 2028, 2029, 2030];
-    
-    // Proportional progress curves towards handover
-    // 2026: Base 0%
-    // 2027: +22% of total gain (Corridor launch & The Oasis start)
-    // 2028: +48% of total gain (DWC early phases & DEC expansion)
-    // 2029: +78% of total gain (Metro Blue Line opening & Binghatti delivery)
-    // 2030: 100% of target value at handover
-    const progressFactors = {
-      2026: 0.00,
-      2027: 0.22,
-      2028: 0.50,
-      2029: 0.78,
-      2030: 1.00
-    };
-
     const tahitiBase = properties.damacTahiti.netPriceAED;
     const bingBase = properties.binghatti.netPriceAED;
     const sobhaBase = properties.sobha.netPriceAED;
@@ -243,7 +305,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Event Listener for Slider
+  // Year Selection Listeners (Slider and Buttons)
+  const sliderYear = document.getElementById('slider-sim-year');
+  if (sliderYear) {
+    sliderYear.addEventListener('input', (e) => {
+      state.selectedYear = parseInt(e.target.value);
+      calculateSimulator();
+    });
+  }
+
+  document.querySelectorAll('.btn-year-select').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const yr = parseInt(btn.getAttribute('data-year'));
+      state.selectedYear = yr;
+      if (sliderYear) sliderYear.value = yr;
+      calculateSimulator();
+    });
+  });
+
+  // Target Exit Price Slider
   const sqftSlider = document.getElementById('slider-exit-sqft');
   if (sqftSlider) {
     sqftSlider.addEventListener('input', (e) => {
@@ -252,7 +332,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Side Drawer Navigation Logic (Hamburger Button)
+  // Growth Scenario Buttons
+  const scenarioButtons = document.querySelectorAll('.btn-scenario');
+  scenarioButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scenarioButtons.forEach(b => {
+        b.classList.remove('bg-amber-500/30', 'text-amber-200', 'border-amber-400');
+        b.classList.add('text-slate-400');
+      });
+      btn.classList.add('bg-amber-500/30', 'text-amber-200', 'border-amber-400');
+      btn.classList.remove('text-slate-400');
+
+      const val = parseFloat(btn.getAttribute('data-target-sqft'));
+      state.targetPriceSqft = val;
+      if (sqftSlider) sqftSlider.value = val;
+      calculateSimulator();
+    });
+  });
+
+  // Hamburger Drawer Logic
   const btnHamburger = document.getElementById('btn-hamburger');
   const btnCloseDrawer = document.getElementById('btn-close-drawer');
   const sideDrawer = document.getElementById('side-drawer');
@@ -282,7 +380,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnCloseDrawer) btnCloseDrawer.addEventListener('click', closeDrawer);
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
 
-  // Close drawer when any nav link is clicked
   document.querySelectorAll('.drawer-link').forEach(link => {
     link.addEventListener('click', closeDrawer);
   });
@@ -326,5 +423,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize
   updateCurrencyElements();
   calculateSimulator();
-  console.log('Dubai Advisory Portal updated with sliding drawer and yearly valuation engine for Tanmay.');
 });

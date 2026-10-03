@@ -651,155 +651,252 @@
   <section id="simulator" class="py-20 relative bg-slate-950/60 border-t border-slate-800/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Live Financial Engine</span>
-        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Interactive Optimistic ROI Simulator</h2>
-        <p class="text-slate-400 text-sm mt-3">Adjust the market appreciation slider to model optimistic capital gains and cash-on-cash multiples at handover.</p>
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Dynamic Capital Modeling</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2">Year-by-Year Valuation & ROI Engine</h2>
+        <p class="text-slate-400 text-sm mt-3">
+          Explore how property values, capital invested (equity), and net profit expand year-by-year from launch (2026) through handover (2029?2030) as micro-market catalysts materialize.
+        </p>
       </div>
 
       <div class="glass-panel-gold rounded-3xl p-6 sm:p-10 mb-12">
         
-        <div class="max-w-2xl mx-auto text-center space-y-4 mb-10">
-          <label class="text-xs font-semibold uppercase tracking-wider text-slate-300 block">
-            Target Secondary Market Price at Handover (AED / sq.ft):
-          </label>
-          <div class="flex items-center justify-center space-x-4">
-            <span class="text-xs text-slate-400">1,500 AED/sq.ft</span>
-            <input type="range" id="slider-exit-sqft" min="1500" max="2500" step="25" value="1950" class="w-full max-w-md h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer">
-            <span class="text-xs text-slate-400">2,500 AED/sq.ft</span>
+        <!-- PRIMARY CONTROL: YEAR TIMELINE STEPPER -->
+        <div class="max-w-3xl mx-auto mb-10 p-6 rounded-2xl bg-slate-900/95 border border-amber-500/30 shadow-2xl">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-amber-400 tracking-widest block">Primary Simulation Control</span>
+              <h4 class="font-cinzel text-lg font-bold text-white">Select Valuation Milestone Year</h4>
+            </div>
+            <div class="px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 font-cinzel text-xl font-extrabold" id="active-sim-year">
+              2030
+            </div>
           </div>
-          <div class="text-center">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 font-cinzel text-lg font-bold" id="slider-sqft-val">
-              1,950 AED/sq.ft
-            </span>
-            <span class="text-xs text-slate-400 block mt-1">(Context: The Oasis currently sells at 2,065 AED/sq.ft; Acres at 1,977)</span>
+
+          <!-- Clickable Year Buttons -->
+          <div class="grid grid-cols-5 gap-2 sm:gap-3 mb-4">
+            <button type="button" data-year="2026" class="btn-year-select py-2.5 px-1 sm:px-3 rounded-xl border border-slate-700/80 bg-slate-900 text-slate-300 hover:text-white hover:border-amber-400/50 text-xs sm:text-sm font-semibold transition-all text-center">
+              <span>2026</span>
+              <span class="block text-[9px] text-slate-400 font-normal">Entry</span>
+            </button>
+            <button type="button" data-year="2027" class="btn-year-select py-2.5 px-1 sm:px-3 rounded-xl border border-slate-700/80 bg-slate-900 text-slate-300 hover:text-white hover:border-amber-400/50 text-xs sm:text-sm font-semibold transition-all text-center">
+              <span>2027</span>
+              <span class="block text-[9px] text-slate-400 font-normal">The Oasis</span>
+            </button>
+            <button type="button" data-year="2028" class="btn-year-select py-2.5 px-1 sm:px-3 rounded-xl border border-slate-700/80 bg-slate-900 text-slate-300 hover:text-white hover:border-amber-400/50 text-xs sm:text-sm font-semibold transition-all text-center">
+              <span>2028</span>
+              <span class="block text-[9px] text-slate-400 font-normal">DWC Airport</span>
+            </button>
+            <button type="button" data-year="2029" class="btn-year-select py-2.5 px-1 sm:px-3 rounded-xl border border-slate-700/80 bg-slate-900 text-slate-300 hover:text-white hover:border-amber-400/50 text-xs sm:text-sm font-semibold transition-all text-center">
+              <span>2029</span>
+              <span class="block text-[9px] text-slate-400 font-normal">Binghatti Keys</span>
+            </button>
+            <button type="button" data-year="2030" class="btn-year-select py-2.5 px-1 sm:px-3 rounded-xl border border-amber-500 bg-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold shadow-lg transition-all text-center">
+              <span>2030</span>
+              <span class="block text-[9px] font-bold">Handover</span>
+            </button>
+          </div>
+
+          <!-- Range Slider for smooth scrubbing -->
+          <div class="space-y-1">
+            <input type="range" id="slider-sim-year" min="2026" max="2030" step="1" value="2030" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400">
+            <div class="flex justify-between text-[10px] text-slate-400 pt-1">
+              <span>2026 Launch (Base)</span>
+              <span>2027 Corridor Work</span>
+              <span>2028 DWC Expansion</span>
+              <span>2029 Binghatti Handover</span>
+              <span>2030 Full Maturation</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Milestone Description Banner -->
+          <div class="mt-4 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-start space-x-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-amber-300 block" id="active-milestone-tag">2030 Catalyst: Handover of DAMAC Islands 2 & Sobha Sanctuary</span>
+              <p class="text-[11px] text-slate-300 mt-0.5 leading-relaxed" id="active-milestone-desc">Lagoon master communities mature. Full capital appreciation and primary-to-secondary market premium realized.</p>
+            </div>
           </div>
         </div>
 
+        <!-- SECONDARY CONTROLS: MARKET GROWTH SCENARIOS & EXIT BENCHMARK -->
+        <div class="max-w-3xl mx-auto mb-10 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Secondary Calibration</span>
+              <span class="text-xs text-slate-200 font-semibold">Handover Exit Rate Benchmark:</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button type="button" class="btn-scenario px-3 py-1 rounded-lg text-xs font-medium border border-slate-700 bg-slate-800/80 text-slate-400 hover:text-white transition-colors" data-target-sqft="1800">
+                Conservative (1,800/sqft)
+              </button>
+              <button type="button" class="btn-scenario px-3 py-1 rounded-lg text-xs font-semibold border border-amber-400 bg-amber-500/30 text-amber-200 transition-colors" data-target-sqft="1950">
+                Moderate (1,950/sqft)
+              </button>
+              <button type="button" class="btn-scenario px-3 py-1 rounded-lg text-xs font-medium border border-slate-700 bg-slate-800/80 text-slate-400 hover:text-white transition-colors" data-target-sqft="2150">
+                Optimistic (2,150/sqft)
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center space-x-4 pt-1">
+            <span class="text-[11px] text-slate-400">1,500 AED/sq.ft</span>
+            <input type="range" id="slider-exit-sqft" min="1500" max="2500" step="25" value="1950" class="w-full max-w-md h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400">
+            <span class="text-[11px] text-slate-400">2,500 AED/sq.ft</span>
+          </div>
+
+          <div class="text-center text-xs text-slate-400">
+            Current Exit Benchmark Applied: <span class="font-bold text-amber-300" id="slider-sqft-val">1,950 AED/sq.ft</span> 
+            <span class="text-[10px] text-slate-500 ml-1">(Context: Emaar The Oasis trades at 2,065 AED/sq.ft)</span>
+          </div>
+        </div>
+
+        <!-- THE 3 DYNAMIC PROPERTY CARDS -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <!-- Result 1 -->
-          <div class="p-6 rounded-2xl bg-slate-900/90 border border-amber-500/30 space-y-4">
+          <!-- Card 1: DAMAC Islands 2 -->
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-amber-500/40 space-y-4 shadow-xl relative">
             <div class="flex justify-between items-start">
               <div>
                 <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">DAMAC Islands 2</span>
                 <h4 class="font-cinzel text-lg font-bold text-white">Tahiti 5BR End Unit</h4>
-                <p class="text-xs text-slate-400">Net Entry: <span data-currency-aed="3764160">AED 3.76M</span> (1,191/sqft ? DLD Waived)</p>
+                <p class="text-xs text-slate-400">Net Entry: <span data-currency-aed="3764160">AED 3.76M</span> (1,192/sqft &bull; 100% DLD Waived)</p>
               </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Max Gain</span>
+              <span id="sim-tahiti-status" class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Under Construction</span>
             </div>
 
             <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
               <div class="flex justify-between">
-                <span class="text-slate-400">Projected Value:</span>
-                <span class="text-white font-bold text-sm" id="sim-tahiti-exit">AED 6,158,568</span>
+                <span class="text-slate-400">Estimated Property Value:</span>
+                <span class="text-white font-bold text-base" id="sim-tahiti-exit">AED 6,158,568</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Net Profit (Capital Gain):</span>
-                <span class="text-emerald-400 font-extrabold text-sm" id="sim-tahiti-profit">+AED 2,237,568</span>
+                <span class="text-slate-400">Estimated Rate / sq.ft:</span>
+                <span class="text-amber-300 font-semibold" id="sim-tahiti-rate">1,950 AED/sq.ft</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Total Asset Appreciation:</span>
-                <span class="text-slate-200 font-semibold" id="sim-tahiti-roi">+57%</span>
+                <span class="text-slate-400">Net Capital Profit:</span>
+                <span class="text-emerald-400 font-extrabold text-sm" id="sim-tahiti-profit">+AED 2,394,408</span>
               </div>
-              <div class="flex justify-between py-1 bg-amber-500/10 px-2 rounded border border-amber-500/20">
-                <span class="text-amber-300 font-bold">Cash-on-Cash (Equity):</span>
-                <span class="text-amber-300 font-extrabold" id="sim-tahiti-coc">+114%</span>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Asset Value Appreciation:</span>
+                <span class="text-slate-200 font-semibold" id="sim-tahiti-roi">+64%</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Cumulative Cash Paid (Equity):</span>
+                <span class="text-slate-300 font-medium" id="sim-tahiti-equity">AED 1,882,080 (50%)</span>
+              </div>
+              <div class="flex justify-between py-1.5 bg-amber-500/10 px-2.5 rounded-lg border border-amber-500/30 mt-2">
+                <span class="text-amber-300 font-bold">Cash-on-Cash Return:</span>
+                <span class="text-amber-300 font-extrabold text-sm" id="sim-tahiti-coc">+127%</span>
               </div>
             </div>
           </div>
 
-          <!-- Result 2 -->
-          <div class="p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/30 space-y-4">
+          <!-- Card 2: Tilal Binghatti -->
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/40 space-y-4 shadow-xl relative">
             <div class="flex justify-between items-start">
               <div>
                 <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Binghatti Developers</span>
                 <h4 class="font-cinzel text-lg font-bold text-white">Tilal Binghatti 4BR</h4>
                 <p class="text-xs text-slate-400">Initial: <span data-currency-aed="4540000">AED 4.54M</span> (1,636/sqft)</p>
               </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Fastest Exit</span>
+              <span id="sim-binghatti-status" class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Under Construction</span>
             </div>
 
             <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
               <div class="flex justify-between">
-                <span class="text-slate-400">Projected Value:</span>
-                <span class="text-white font-bold text-sm" id="sim-binghatti-exit">AED 5,410,295</span>
+                <span class="text-slate-400">Estimated Property Value:</span>
+                <span class="text-white font-bold text-base" id="sim-binghatti-exit">AED 5,410,295</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Net Profit (Capital Gain):</span>
+                <span class="text-slate-400">Estimated Rate / sq.ft:</span>
+                <span class="text-emerald-300 font-semibold" id="sim-binghatti-rate">1,950 AED/sq.ft</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Net Capital Profit:</span>
                 <span class="text-emerald-400 font-extrabold text-sm" id="sim-binghatti-profit">+AED 870,295</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Total Asset Appreciation:</span>
+                <span class="text-slate-400">Asset Value Appreciation:</span>
                 <span class="text-slate-200 font-semibold" id="sim-binghatti-roi">+19%</span>
               </div>
-              <div class="flex justify-between py-1 bg-emerald-500/10 px-2 rounded border border-emerald-500/20">
-                <span class="text-emerald-300 font-bold">Cash-on-Cash (Equity):</span>
-                <span class="text-emerald-300 font-extrabold" id="sim-binghatti-coc">+38%</span>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Cumulative Cash Paid (Equity):</span>
+                <span class="text-slate-300 font-medium" id="sim-binghatti-equity">AED 2,270,000 (50%)</span>
+              </div>
+              <div class="flex justify-between py-1.5 bg-emerald-500/10 px-2.5 rounded-lg border border-emerald-500/30 mt-2">
+                <span class="text-emerald-300 font-bold">Cash-on-Cash Return:</span>
+                <span class="text-emerald-300 font-extrabold text-sm" id="sim-binghatti-coc">+38%</span>
               </div>
             </div>
           </div>
 
-          <!-- Result 3 -->
-          <div class="p-6 rounded-2xl bg-slate-900/90 border border-purple-500/30 space-y-4">
+          <!-- Card 3: Sobha Sanctuary -->
+          <div class="p-6 rounded-2xl bg-slate-900/90 border border-purple-500/40 space-y-4 shadow-xl relative">
             <div class="flex justify-between items-start">
               <div>
                 <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider">Sobha Realty</span>
                 <h4 class="font-cinzel text-lg font-bold text-white">The Willows 4BR</h4>
                 <p class="text-xs text-slate-400">Initial: <span data-currency-aed="4057383">AED 4.06M</span> (1,650/sqft)</p>
               </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">Prime Quality</span>
+              <span id="sim-sobha-status" class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">Under Construction</span>
             </div>
 
             <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
               <div class="flex justify-between">
-                <span class="text-slate-400">Projected Value:</span>
-                <span class="text-white font-bold text-sm" id="sim-sobha-exit">AED 4,795,089</span>
+                <span class="text-slate-400">Estimated Property Value:</span>
+                <span class="text-white font-bold text-base" id="sim-sobha-exit">AED 4,795,089</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Net Profit (Capital Gain):</span>
+                <span class="text-slate-400">Estimated Rate / sq.ft:</span>
+                <span class="text-purple-300 font-semibold" id="sim-sobha-rate">1,950 AED/sq.ft</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Net Capital Profit:</span>
                 <span class="text-emerald-400 font-extrabold text-sm" id="sim-sobha-profit">+AED 737,706</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Total Asset Appreciation:</span>
+                <span class="text-slate-400">Asset Value Appreciation:</span>
                 <span class="text-slate-200 font-semibold" id="sim-sobha-roi">+18%</span>
               </div>
-              <div class="flex justify-between py-1 bg-purple-500/10 px-2 rounded border border-purple-500/20">
-                <span class="text-purple-300 font-bold">Cash-on-Cash (Equity):</span>
-                <span class="text-purple-300 font-extrabold" id="sim-sobha-coc">+45%</span>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Cumulative Cash Paid (Equity):</span>
+                <span class="text-slate-300 font-medium" id="sim-sobha-equity">AED 1,622,953 (40%)</span>
+              </div>
+              <div class="flex justify-between py-1.5 bg-purple-500/10 px-2.5 rounded-lg border border-purple-500/30 mt-2">
+                <span class="text-purple-300 font-bold">Cash-on-Cash Return:</span>
+                <span class="text-purple-300 font-extrabold text-sm" id="sim-sobha-coc">+45%</span>
               </div>
             </div>
           </div>
 
         </div>
 
-      
-        <!-- Interactive Year-by-Year Valuation Engine (2026 - 2030) -->
+        <!-- FULL 2026-2030 TRAJECTORY TABLE BELOW -->
         <div class="mt-12 pt-10 border-t border-slate-800/80">
           <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
               <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-semibold tracking-wider uppercase mb-2">
                 <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                <span>Annualized Capital Growth Path</span>
+                <span>Complete Progression Matrix</span>
               </div>
-              <h3 class="font-cinzel text-2xl font-bold text-white">Estimated Valuation Trajectory (2026 ? 2030)</h3>
-              <p class="text-xs text-slate-400 mt-1">Dynamic values modeled on your target exit rate, synchronized with surrounding master infrastructure completions.</p>
-            </div>
-            <div class="text-xs text-slate-400 bg-slate-900/90 px-4 py-2 rounded-xl border border-slate-800 self-start md:self-auto">
-              <span>Exit Benchmark: </span>
-              <strong class="text-amber-300 font-bold">Correlated with Target Slider</strong>
+              <h3 class="font-cinzel text-2xl font-bold text-white">Full Valuation Trajectory Matrix (2026 &ndash; 2030)</h3>
+              <p class="text-xs text-slate-400 mt-1">Cross-reference capital values year-by-year as off-plan developments progress toward secondary delivery.</p>
             </div>
           </div>
 
-          <!-- Desktop & Tablet Table View -->
+          <!-- Desktop Table View -->
           <div class="hidden lg:block overflow-x-auto rounded-2xl border border-slate-800/90 bg-slate-900/70">
             <table class="w-full text-left text-xs">
               <thead>
                 <tr class="border-b border-slate-800 bg-slate-950/80 text-[11px] uppercase tracking-wider text-slate-400">
                   <th class="py-4 px-6 font-semibold">Development & Unit</th>
-                  <th class="py-4 px-4 font-semibold text-center">2026 (Entry)</th>
+                  <th class="py-4 px-4 font-semibold text-center">2026 (Launch)</th>
                   <th class="py-4 px-4 font-semibold text-center">2027 (The Oasis Start)</th>
-                  <th class="py-4 px-4 font-semibold text-center">2028 (DWC Expansion)</th>
+                  <th class="py-4 px-4 font-semibold text-center">2028 (DWC Airport)</th>
                   <th class="py-4 px-4 font-semibold text-center">2029 (Metro Blue Line)</th>
                   <th class="py-4 px-6 font-semibold text-right">2030 (Handover Target)</th>
                 </tr>
@@ -809,7 +906,7 @@
                 <tr class="hover:bg-amber-500/5 transition-colors">
                   <td class="py-4 px-6">
                     <div class="font-cinzel font-bold text-sm text-amber-300">DAMAC Islands 2 (Tahiti 5BR)</div>
-                    <div class="text-[11px] text-slate-400">Entry net: <span data-currency-aed="3764160">AED 3.76M</span> ? 100% DLD Waived</div>
+                    <div class="text-[11px] text-slate-400">Net: <span data-currency-aed="3764160">AED 3.76M</span> &bull; 100% DLD Waived</div>
                   </td>
                   <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2026-tahiti">AED 3,764,160</td>
                   <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2027-tahiti">AED 4,290,930</td>
@@ -822,7 +919,7 @@
                 <tr class="hover:bg-emerald-500/5 transition-colors">
                   <td class="py-4 px-6">
                     <div class="font-cinzel font-bold text-sm text-emerald-300">Tilal Binghatti (4BR Villa)</div>
-                    <div class="text-[11px] text-slate-400">Entry: <span data-currency-aed="4540000">AED 4.54M</span> ? Handover Q2 2029</div>
+                    <div class="text-[11px] text-slate-400">Entry: <span data-currency-aed="4540000">AED 4.54M</span> &bull; Handover Q2 2029</div>
                   </td>
                   <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2026-bing">AED 4,540,000</td>
                   <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2027-bing">AED 4,731,465</td>
@@ -835,7 +932,7 @@
                 <tr class="hover:bg-purple-500/5 transition-colors">
                   <td class="py-4 px-6">
                     <div class="font-cinzel font-bold text-sm text-purple-300">Sobha Sanctuary (The Willows 4BR)</div>
-                    <div class="text-[11px] text-slate-400">Entry: <span data-currency-aed="4057383">AED 4.06M</span> ? Handover Aug 2030</div>
+                    <div class="text-[11px] text-slate-400">Entry: <span data-currency-aed="4057383">AED 4.06M</span> &bull; Handover Aug 2030</div>
                   </td>
                   <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2026-sobha">AED 4,057,383</td>
                   <td class="py-4 px-4 text-center font-bold text-slate-200" id="yr-2027-sobha">AED 4,219,678</td>
@@ -849,78 +946,35 @@
 
           <!-- Mobile Cards View for Small Screens -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:hidden mt-6">
-            <!-- Mobile Tahiti -->
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/30 space-y-3">
-              <div class="border-b border-slate-800 pb-2">
-                <span class="text-[10px] text-amber-400 font-bold uppercase">DAMAC Islands 2</span>
-                <h4 class="font-cinzel text-base font-bold text-white">Tahiti 5BR End Unit</h4>
-              </div>
-              <div class="space-y-1.5 text-xs">
-                <div class="flex justify-between"><span class="text-slate-400">2026 (Entry):</span><span class="font-bold text-slate-200">AED 3,764,160</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="font-bold text-slate-200">AED 4,290,930</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="font-bold text-amber-300">AED 4,961,364</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2029:</span><span class="font-bold text-emerald-400">AED 5,631,798</span></div>
-                <div class="flex justify-between pt-1 border-t border-slate-800"><span class="text-amber-400 font-bold">2030 (Exit):</span><span class="font-extrabold text-amber-300">AED 6,158,568</span></div>
-              </div>
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/30 space-y-2 text-xs">
+              <span class="text-amber-400 font-bold uppercase text-[10px]">DAMAC Tahiti 5BR</span>
+              <div class="flex justify-between"><span class="text-slate-400">2026:</span><span class="text-white font-bold">AED 3.76M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="text-slate-300 font-bold">AED 4.29M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="text-amber-300 font-bold">AED 4.96M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2029:</span><span class="text-emerald-400 font-bold">AED 5.63M</span></div>
+              <div class="flex justify-between border-t border-slate-800 pt-1"><span class="text-amber-400 font-bold">2030:</span><span class="text-amber-300 font-extrabold">AED 6.16M</span></div>
             </div>
-
-            <!-- Mobile Binghatti -->
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/30 space-y-3">
-              <div class="border-b border-slate-800 pb-2">
-                <span class="text-[10px] text-emerald-400 font-bold uppercase">Tilal Binghatti</span>
-                <h4 class="font-cinzel text-base font-bold text-white">4BR Independent Villa</h4>
-              </div>
-              <div class="space-y-1.5 text-xs">
-                <div class="flex justify-between"><span class="text-slate-400">2026 (Entry):</span><span class="font-bold text-slate-200">AED 4,540,000</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="font-bold text-slate-200">AED 4,731,465</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="font-bold text-emerald-300">AED 4,975,148</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2029 (Handover):</span><span class="font-extrabold text-emerald-400">AED 5,218,830</span></div>
-                <div class="flex justify-between pt-1 border-t border-slate-800"><span class="text-emerald-400 font-bold">2030 (Matured):</span><span class="font-extrabold text-emerald-300">AED 5,410,295</span></div>
-              </div>
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/30 space-y-2 text-xs">
+              <span class="text-emerald-400 font-bold uppercase text-[10px]">Tilal Binghatti 4BR</span>
+              <div class="flex justify-between"><span class="text-slate-400">2026:</span><span class="text-white font-bold">AED 4.54M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="text-slate-300 font-bold">AED 4.73M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="text-emerald-300 font-bold">AED 4.98M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2029 (Keys):</span><span class="text-emerald-400 font-extrabold">AED 5.22M</span></div>
+              <div class="flex justify-between border-t border-slate-800 pt-1"><span class="text-emerald-400 font-bold">2030:</span><span class="text-emerald-300 font-extrabold">AED 5.41M</span></div>
             </div>
-
-            <!-- Mobile Sobha -->
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-purple-500/30 space-y-3">
-              <div class="border-b border-slate-800 pb-2">
-                <span class="text-[10px] text-purple-400 font-bold uppercase">Sobha Sanctuary</span>
-                <h4 class="font-cinzel text-base font-bold text-white">The Willows 4BR</h4>
-              </div>
-              <div class="space-y-1.5 text-xs">
-                <div class="flex justify-between"><span class="text-slate-400">2026 (Entry):</span><span class="font-bold text-slate-200">AED 4,057,383</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="font-bold text-slate-200">AED 4,219,678</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="font-bold text-purple-300">AED 4,426,236</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">2029:</span><span class="font-bold text-purple-300">AED 4,632,794</span></div>
-                <div class="flex justify-between pt-1 border-t border-slate-800"><span class="text-purple-400 font-bold">2030 (Exit):</span><span class="font-extrabold text-purple-300">AED 4,795,089</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Timeline Catalysts Footnote -->
-          <div class="mt-6 p-4 rounded-xl bg-slate-900/50 border border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-400 gap-3">
-            <div class="flex items-center space-x-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span><strong>2026:</strong> Off-plan entry baseline</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span><strong>2027:</strong> Emaar The Oasis villas launch (+22%)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span><strong>2028:</strong> Al Maktoum Airport & Expo Center build-out (+50%)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span><strong>2029:</strong> Metro Blue Line operational & Tilal Binghatti delivery (+78%)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span><strong>2030:</strong> Lagoon community completion (100% target)</span>
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-purple-500/30 space-y-2 text-xs">
+              <span class="text-purple-400 font-bold uppercase text-[10px]">Sobha Sanctuary 4BR</span>
+              <div class="flex justify-between"><span class="text-slate-400">2026:</span><span class="text-white font-bold">AED 4.06M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2027:</span><span class="text-slate-300 font-bold">AED 4.22M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2028:</span><span class="text-purple-300 font-bold">AED 4.43M</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">2029:</span><span class="text-purple-300 font-bold">AED 4.63M</span></div>
+              <div class="flex justify-between border-t border-slate-800 pt-1"><span class="text-purple-400 font-bold">2030 (Keys):</span><span class="text-purple-300 font-extrabold">AED 4.80M</span></div>
             </div>
           </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
