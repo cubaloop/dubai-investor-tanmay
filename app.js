@@ -1,103 +1,137 @@
-// Dubai Ultra-Luxury Investment Advisory - App Logic for Tanmay
+// Dubai Ultra-Luxury Investment Advisory - Unified Simulator for Tanmay
 document.addEventListener('DOMContentLoaded', () => {
   // Global State
   const state = {
     currency: 'AED', // 'AED' or 'USD'
     usdRate: 3.6725,
-    selectedYear: 2030, // 2026, 2027, 2028, 2029, 2030
-    growthScenario: 'moderate', // 'conservative' (8%), 'moderate' (11%), 'optimistic' (14%)
-    targetPriceSqft: 1950, // default target exit price at 2030
+    selectedYear: 2028, // Default to intermediate milestone year so Tanmay sees the progression right away!
   };
 
   // Milestones per year
   const yearMilestones = {
     2026: {
-      tag: 'Off-Plan Launch & Entry Baseline',
-      desc: 'Initial booking at developer off-plan pricing. Minimum cash outlay with maximum future upside.'
+      tag: 'Off-Plan Launch & Entry Baseline (2026)',
+      desc: 'Tanmay locks in off-plan pricing. DAMAC includes 4% direct discount + 100% DLD waiver. Minimum initial cash outlay.'
     },
     2027: {
-      tag: 'Emaar The Oasis Groundbreaking & Access Corridors',
-      desc: 'Adjacent luxury mega-developments break ground. Area price benchmarks rise +15% to +22%.'
+      tag: 'Emaar The Oasis Groundbreaking & Access Corridors (2027)',
+      desc: 'Adjacent luxury master community begins active construction, establishing an immediate premium price floor of 2,065 AED/sq.ft.'
     },
     2028: {
-      tag: 'Al Maktoum Airport (DWC) Expansion & DEC Center',
-      desc: 'Global logistics and airport expansion shifts Dubai center of gravity south. Flip threshold unlocked.'
+      tag: 'Al Maktoum Airport (DWC) Expansion & DEC Exhibition Scaling (2028)',
+      desc: 'Government shifts Dubai economic core south. Tanmay crosses the 34-40% equity threshold, unlocking DLD formal resale/flip rights.'
     },
     2029: {
-      tag: 'Metro Blue Line Operations & Tilal Binghatti Handover',
-      desc: 'Tilal Binghatti delivers keys in Q2 2029 (fastest exit). Direct metro connectivity goes live.'
+      tag: 'Metro Blue Line Operations & Tilal Binghatti Handover (2029)',
+      desc: 'Tilal Binghatti delivers keys in Q2 2029 (fastest exit/rental yield). Direct metro transport connects corridor to Downtown Dubai.'
     },
     2030: {
-      tag: 'Handover of DAMAC Islands 2 & Sobha Sanctuary',
-      desc: 'Lagoon master communities mature. Full capital appreciation and primary-to-secondary market premium realized.'
+      tag: 'Full Master Community Handover: DAMAC Islands 2 & Sobha (2030)',
+      desc: 'Crystal lagoons and biophilic forests fully operational. Primary-to-secondary market arbitrage reaches 100% maturity.'
     }
   };
 
-  // Property Data (with DAMAC 4% direct discount + 100% DLD waiver)
-  const properties = {
+  // Property Data with Year-by-Year Price Progression and Equity Payment Plans
+  const propertyData = {
     damacTahiti: {
       id: 'damacTahiti',
-      name: 'DAMAC Islands 2 - Tahiti 2',
-      developer: 'DAMAC Properties',
-      type: '5 BR Townhouse (End Unit)',
-      unitNo: 'A126X10',
+      name: 'DAMAC Islands 2 (Tahiti 5BR)',
+      type: '5 BR Townhouse End Unit',
       saleableArea: 3158.24,
-      grossPriceAED: 3921000,
-      discountPct: 4,
-      netPriceAED: 3764160,       // 3,921,000 - 4%
-      priceSqftAED: 1191.85,      // 3,764,160 / 3158.24
-      dldWaiverPct: 100,
-      // Equity progression by year (% of net price paid)
-      equitySchedule: {
-        2026: 0.20, // 20% booking
-        2027: 0.29, // +9% (0.75%/month)
-        2028: 0.38, // +9%
-        2029: 0.50, // +12% milestone
-        2030: 0.50  // 50% paid pre-handover (50% balance on keys)
+      netPriceAED: 3764160, // 3,921,000 - 4% discount
+      entryRateAED: 1191.85,
+      handoverYear: 2030,
+      // Values year-by-year reaching 2,000 AED/sq.ft (AED 6,316,480) at handover
+      yearlyValuations: {
+        2026: 3764160,
+        2027: 4325000,
+        2028: 5020000,
+        2029: 5750000,
+        2030: 6316480
       },
-      handoverYear: 2030
+      // Cash disbursed by Tanmay by year (20% booking, 0.75%/mo = 9%/yr, 50% handover)
+      equitySchedule: {
+        2026: { pct: 0.20, aed: 752832 },
+        2027: { pct: 0.29, aed: 1091606 },
+        2028: { pct: 0.38, aed: 1430381 },
+        2029: { pct: 0.50, aed: 1882080 },
+        2030: { pct: 0.50, aed: 1882080 } // 50% paid pre-keys
+      },
+      status: {
+        2026: '20% Down Payment Booked',
+        2027: 'Under Construction (0.75%/mo)',
+        2028: 'Under Construction (Flip Eligible)',
+        2029: '50% Paid (Final Pre-Handover Phase)',
+        2030: 'Handover Completed (June 2030)'
+      }
     },
     binghatti: {
       id: 'binghatti',
       name: 'Tilal Binghatti',
-      developer: 'Binghatti Developers',
-      type: '4 BR Villa',
-      unitNo: 'TB-P3-R-CL54-T-6',
+      type: '4 BR Independent Villa',
       saleableArea: 2774.51,
-      grossPriceAED: 4540000,
       netPriceAED: 4540000,
-      priceSqftAED: 1636.32,
-      equitySchedule: {
-        2026: 0.10, // 10% booking
-        2027: 0.22, // 12% in 2027
-        2028: 0.34, // 12% in 2028
-        2029: 0.50, // 50% pre-handover (delivered Q2 2029)
-        2030: 1.00  // 100% paid (completed property)
+      entryRateAED: 1636.32,
+      handoverYear: 2029,
+      // Values reaching 2,000 AED/sq.ft (AED 5,549,020) at Q2 2029 delivery, and 2,100 in 2030
+      yearlyValuations: {
+        2026: 4540000,
+        2027: 4760000,
+        2028: 5080000,
+        2029: 5549020,
+        2030: 5826470
       },
-      handoverYear: 2029
+      // Payment plan: 10% 2026, 12% 2027, 12% 2028 = 34%, 50% handover 2029
+      equitySchedule: {
+        2026: { pct: 0.10, aed: 454000 },
+        2027: { pct: 0.22, aed: 998800 },
+        2028: { pct: 0.34, aed: 1543600 },
+        2029: { pct: 0.50, aed: 2270000 }, // paid pre-keys
+        2030: { pct: 1.00, aed: 4540000 }  // completed asset
+      },
+      status: {
+        2026: '10% Booking Deposit',
+        2027: 'Construction Phase 1',
+        2028: '34% Paid (Fast Flip Window)',
+        2029: 'KEYS HANDED OVER (Q2 2029)',
+        2030: 'Delivered Villa (Rental Yielding)'
+      }
     },
     sobha: {
       id: 'sobha',
-      name: 'Sobha Sanctuary - The Willows',
-      developer: 'Sobha Realty',
-      type: '4 BR Garden Villa (Type B)',
-      unitNo: 'TWL-GV-659',
+      name: 'Sobha Sanctuary (The Willows)',
+      type: '4 BR Middle Garden Villa',
       saleableArea: 2459.02,
-      grossPriceAED: 4057383,
       netPriceAED: 4057383,
-      priceSqftAED: 1650.00,
-      equitySchedule: {
-        2026: 0.20, // 20% down
-        2027: 0.30, // +10%
-        2028: 0.40, // +10%
-        2029: 0.40, // pauses until handover
-        2030: 0.40  // 40% pre-handover (60% balance on keys)
+      entryRateAED: 1650.00,
+      handoverYear: 2030,
+      // Values reaching 2,000 AED/sq.ft (AED 4,918,040) at handover 2030
+      yearlyValuations: {
+        2026: 4057383,
+        2027: 4245000,
+        2028: 4490000,
+        2029: 4710000,
+        2030: 4918040
       },
-      handoverYear: 2030
+      // Payment plan: 20% down, 10% 2027, 10% 2028 = 40% paid until handover
+      equitySchedule: {
+        2026: { pct: 0.20, aed: 811476 },
+        2027: { pct: 0.30, aed: 1217215 },
+        2028: { pct: 0.40, aed: 1622953 },
+        2029: { pct: 0.40, aed: 1622953 },
+        2030: { pct: 0.40, aed: 1622953 } // 40% paid pre-keys
+      },
+      status: {
+        2026: '20% Structured Booking',
+        2027: '30% Construction Milestone',
+        2028: '40% Construction Cap Reached',
+        2029: 'Payment Pause Pre-Handover',
+        2030: 'Handover Completed (August 2030)'
+      }
     }
   };
 
-  // Format Helpers
+  // Currency Formatter Helpers
   function formatMoney(amountAED) {
     if (state.currency === 'USD') {
       const val = amountAED / state.usdRate;
@@ -116,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Update Dynamic Currency Across Page
+  // Update Dynamic Currency Elements
   function updateCurrencyElements() {
     document.querySelectorAll('[data-currency-aed]').forEach(el => {
       const aedVal = parseFloat(el.getAttribute('data-currency-aed'));
@@ -144,152 +178,114 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    calculateSimulator();
+    renderYearSimulation();
   }
 
-  // Progress factors by year (intercalating market growth towards 2030 exit target)
-  const progressFactors = {
-    2026: 0.00, // baseline
-    2027: 0.22, // The Oasis launch
-    2028: 0.50, // DWC Airport expansion
-    2029: 0.78, // Metro Blue line & Binghatti handover
-    2030: 1.00  // Full masterplan delivery
-  };
-
-  // Main Simulator Engine
-  function calculateSimulator() {
+  // Unified Single-Tool Simulation Engine
+  function renderYearSimulation() {
     const yr = state.selectedYear;
-    const targetSqft = state.targetPriceSqft;
 
-    // Update target sqft indicator
-    const targetSqftEl = document.getElementById('slider-sqft-val');
-    if (targetSqftEl) {
-      targetSqftEl.textContent = formatSqftRate(targetSqft);
-    }
+    // 1. Update year display & active buttons
+    const activeYearIndicator = document.getElementById('unified-active-year');
+    if (activeYearIndicator) activeYearIndicator.textContent = yr;
 
-    // Update active year displays
-    const displayYearEl = document.getElementById('active-sim-year');
-    if (displayYearEl) displayYearEl.textContent = yr;
-
-    const milestoneTagEl = document.getElementById('active-milestone-tag');
-    const milestoneDescEl = document.getElementById('active-milestone-desc');
-    if (milestoneTagEl && yearMilestones[yr]) {
-      milestoneTagEl.textContent = `${yr} Catalyst: ${yearMilestones[yr].tag}`;
-    }
-    if (milestoneDescEl && yearMilestones[yr]) {
-      milestoneDescEl.textContent = yearMilestones[yr].desc;
-    }
-
-    // Update year pill buttons visual state
-    document.querySelectorAll('.btn-year-select').forEach(btn => {
+    document.querySelectorAll('.unified-year-btn').forEach(btn => {
       const btnYr = parseInt(btn.getAttribute('data-year'));
       if (btnYr === yr) {
-        btn.classList.add('bg-amber-500', 'text-slate-950', 'font-extrabold', 'shadow-lg');
-        btn.classList.remove('bg-slate-900', 'text-slate-300');
+        btn.className = 'unified-year-btn py-2.5 px-2 sm:px-4 rounded-xl font-bold text-xs sm:text-sm text-center transition-all year-step-active';
       } else {
-        btn.classList.remove('bg-amber-500', 'text-slate-950', 'font-extrabold', 'shadow-lg');
-        btn.classList.add('bg-slate-900', 'text-slate-300');
+        btn.className = 'unified-year-btn py-2.5 px-2 sm:px-4 rounded-xl font-medium text-xs sm:text-sm text-center transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700';
       }
     });
 
-    const factor = progressFactors[yr];
+    // 2. Update single milestone description
+    const milestoneInfo = yearMilestones[yr];
+    const milestoneTagEl = document.getElementById('unified-milestone-title');
+    const milestoneDescEl = document.getElementById('unified-milestone-desc');
+    if (milestoneTagEl && milestoneInfo) milestoneTagEl.textContent = milestoneInfo.tag;
+    if (milestoneDescEl && milestoneInfo) milestoneDescEl.textContent = milestoneInfo.desc;
 
-    // Compute for each property for the SELECTED year
-    // DAMAC Tahiti
-    const tahitiBase = properties.damacTahiti.netPriceAED;
-    const tahitiFinal = properties.damacTahiti.saleableArea * targetSqft;
-    const tahitiVal = tahitiBase + (tahitiFinal - tahitiBase) * factor;
-    const tahitiProfit = tahitiVal - tahitiBase;
-    const tahitiRate = tahitiVal / properties.damacTahiti.saleableArea;
-    const tahitiEquityPct = properties.damacTahiti.equitySchedule[yr];
-    const tahitiEquityAED = tahitiBase * tahitiEquityPct;
-    const tahitiCashOnCash = tahitiEquityAED > 0 ? (tahitiProfit / tahitiEquityAED) * 100 : 0;
-    const tahitiAssetGain = (tahitiProfit / tahitiBase) * 100;
-
-    // Binghatti
-    const bingBase = properties.binghatti.netPriceAED;
-    const bingFinal = properties.binghatti.saleableArea * targetSqft;
-    const bingVal = bingBase + (bingFinal - bingBase) * factor;
-    const bingProfit = bingVal - bingBase;
-    const bingRate = bingVal / properties.binghatti.saleableArea;
-    const bingEquityPct = properties.binghatti.equitySchedule[yr];
-    const bingEquityAED = bingBase * bingEquityPct;
-    const bingCashOnCash = bingEquityAED > 0 ? (bingProfit / bingEquityAED) * 100 : 0;
-    const bingAssetGain = (bingProfit / bingBase) * 100;
-
-    // Sobha
-    const sobhaBase = properties.sobha.netPriceAED;
-    const sobhaFinal = properties.sobha.saleableArea * targetSqft;
-    const sobhaVal = sobhaBase + (sobhaFinal - sobhaBase) * factor;
-    const sobhaProfit = sobhaVal - sobhaBase;
-    const sobhaRate = sobhaVal / properties.sobha.saleableArea;
-    const sobhaEquityPct = properties.sobha.equitySchedule[yr];
-    const sobhaEquityAED = sobhaBase * sobhaEquityPct;
-    const sobhaCashOnCash = sobhaEquityAED > 0 ? (sobhaProfit / sobhaEquityAED) * 100 : 0;
-    const sobhaAssetGain = (sobhaProfit / sobhaBase) * 100;
-
-    // Update Cards
-    updatePropertyCard('tahiti', tahitiVal, tahitiRate, tahitiProfit, tahitiAssetGain, tahitiCashOnCash, tahitiEquityAED, tahitiEquityPct, yr, 2030);
-    updatePropertyCard('binghatti', bingVal, bingRate, bingProfit, bingAssetGain, bingCashOnCash, bingEquityAED, bingEquityPct, yr, 2029);
-    updatePropertyCard('sobha', sobhaVal, sobhaRate, sobhaProfit, sobhaAssetGain, sobhaCashOnCash, sobhaEquityAED, sobhaEquityPct, yr, 2030);
-
-    // Update Bottom Full Trajectory Table (all years 2026-2030)
-    updateFullTrajectoryTable(targetSqft, tahitiFinal, bingFinal, sobhaFinal);
+    // 3. Update the 3 property cards directly
+    updateCard('tahiti', propertyData.damacTahiti, yr);
+    updateCard('binghatti', propertyData.binghatti, yr);
+    updateCard('sobha', propertyData.sobha, yr);
   }
 
-  function updatePropertyCard(key, val, rate, profit, assetGain, coc, equityAED, equityPct, curYr, handoverYr) {
-    const valEl = document.getElementById(`sim-${key}-exit`);
+  function updateCard(key, prop, yr) {
+    const currentVal = prop.yearlyValuations[yr];
+    const initialVal = prop.netPriceAED;
+    const profit = currentVal - initialVal;
+    const rate = currentVal / prop.saleableArea;
+    const gainPct = (profit / initialVal) * 100;
+
+    const equityObj = prop.equitySchedule[yr];
+    const equityAED = equityObj.aed;
+    const equityPct = equityObj.pct * 100;
+    const coc = equityAED > 0 ? (profit / equityAED) * 100 : 0;
+
+    // Calculate visual bar width (2026 = 25%, 2030 = 100%)
+    const yearIndex = yr - 2026; // 0 to 4
+    const barWidth = 25 + (yearIndex * 18.75); // 25%, 43.75%, 62.5%, 81.25%, 100%
+
+    // DOM Elements
+    const valEl = document.getElementById(`sim-${key}-val`);
     const rateEl = document.getElementById(`sim-${key}-rate`);
     const profitEl = document.getElementById(`sim-${key}-profit`);
-    const roiEl = document.getElementById(`sim-${key}-roi`);
-    const cocEl = document.getElementById(`sim-${key}-coc`);
+    const gainPctEl = document.getElementById(`sim-${key}-gain-pct`);
     const equityEl = document.getElementById(`sim-${key}-equity`);
+    const cocEl = document.getElementById(`sim-${key}-coc`);
     const statusEl = document.getElementById(`sim-${key}-status`);
+    const barEl = document.getElementById(`sim-${key}-bar`);
 
-    if (valEl) valEl.textContent = formatMoney(val);
+    if (valEl) valEl.textContent = formatMoney(currentVal);
     if (rateEl) rateEl.textContent = formatSqftRate(rate);
-    if (profitEl) profitEl.textContent = (profit >= 0 ? '+' : '') + formatMoney(profit);
-    if (roiEl) roiEl.textContent = '+' + Math.round(assetGain) + '%';
-    if (cocEl) cocEl.textContent = '+' + Math.round(coc) + '%';
-    if (equityEl) equityEl.textContent = `${formatMoney(equityAED)} (${Math.round(equityPct * 100)}%)`;
-
+    if (profitEl) {
+      profitEl.textContent = (profit > 0 ? '+' : '') + formatMoney(profit);
+    }
+    if (gainPctEl) {
+      gainPctEl.textContent = (gainPct > 0 ? '+' : '') + Math.round(gainPct) + '%';
+    }
+    if (equityEl) {
+      equityEl.textContent = `${formatMoney(equityAED)} (${Math.round(equityPct)}%)`;
+    }
+    if (cocEl) {
+      cocEl.textContent = (coc > 0 ? '+' : '') + Math.round(coc) + '%';
+    }
     if (statusEl) {
-      if (curYr < handoverYr) {
-        statusEl.textContent = `Under Construction (${curYr})`;
-        statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
-      } else if (curYr === handoverYr) {
-        statusEl.textContent = `Handover Year (${curYr})`;
-        statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+      statusEl.textContent = prop.status[yr];
+      if (yr === prop.handoverYear) {
+        statusEl.className = 'text-[11px] font-bold px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
+      } else if (yr > prop.handoverYear) {
+        statusEl.className = 'text-[11px] font-bold px-2.5 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-500/40';
       } else {
-        statusEl.textContent = `Post-Handover / Matured`;
-        statusEl.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
+        statusEl.className = 'text-[11px] font-bold px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20';
       }
+    }
+    if (barEl) {
+      barEl.style.width = barWidth + '%';
     }
   }
 
-  function updateFullTrajectoryTable(targetSqft, tahitiFinal, bingFinal, sobhaFinal) {
-    const years = [2026, 2027, 2028, 2029, 2030];
-    const tahitiBase = properties.damacTahiti.netPriceAED;
-    const bingBase = properties.binghatti.netPriceAED;
-    const sobhaBase = properties.sobha.netPriceAED;
-
-    years.forEach(yr => {
-      const f = progressFactors[yr];
-      const valTahiti = tahitiBase + (tahitiFinal - tahitiBase) * f;
-      const valBing = bingBase + (bingFinal - bingBase) * f;
-      const valSobha = sobhaBase + (sobhaFinal - sobhaBase) * f;
-
-      const elTahiti = document.getElementById(`yr-${yr}-tahiti`);
-      const elBing = document.getElementById(`yr-${yr}-bing`);
-      const elSobha = document.getElementById(`yr-${yr}-sobha`);
-
-      if (elTahiti) elTahiti.textContent = formatMoney(valTahiti);
-      if (elBing) elBing.textContent = formatMoney(valBing);
-      if (elSobha) elSobha.textContent = formatMoney(valSobha);
+  // Unified Slider Event
+  const unifiedSlider = document.getElementById('unified-year-slider');
+  if (unifiedSlider) {
+    unifiedSlider.addEventListener('input', (e) => {
+      state.selectedYear = parseInt(e.target.value);
+      renderYearSimulation();
     });
   }
 
-  // Event Listeners for Currency
+  // Unified Button Events
+  document.querySelectorAll('.unified-year-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const yr = parseInt(btn.getAttribute('data-year'));
+      state.selectedYear = yr;
+      if (unifiedSlider) unifiedSlider.value = yr;
+      renderYearSimulation();
+    });
+  });
+
+  // Currency Toggles
   const btnUSD = document.getElementById('btn-currency-usd');
   const btnAED = document.getElementById('btn-currency-aed');
   if (btnUSD) {
@@ -304,51 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateCurrencyElements();
     });
   }
-
-  // Year Selection Listeners (Slider and Buttons)
-  const sliderYear = document.getElementById('slider-sim-year');
-  if (sliderYear) {
-    sliderYear.addEventListener('input', (e) => {
-      state.selectedYear = parseInt(e.target.value);
-      calculateSimulator();
-    });
-  }
-
-  document.querySelectorAll('.btn-year-select').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const yr = parseInt(btn.getAttribute('data-year'));
-      state.selectedYear = yr;
-      if (sliderYear) sliderYear.value = yr;
-      calculateSimulator();
-    });
-  });
-
-  // Target Exit Price Slider
-  const sqftSlider = document.getElementById('slider-exit-sqft');
-  if (sqftSlider) {
-    sqftSlider.addEventListener('input', (e) => {
-      state.targetPriceSqft = parseFloat(e.target.value);
-      calculateSimulator();
-    });
-  }
-
-  // Growth Scenario Buttons
-  const scenarioButtons = document.querySelectorAll('.btn-scenario');
-  scenarioButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      scenarioButtons.forEach(b => {
-        b.classList.remove('bg-amber-500/30', 'text-amber-200', 'border-amber-400');
-        b.classList.add('text-slate-400');
-      });
-      btn.classList.add('bg-amber-500/30', 'text-amber-200', 'border-amber-400');
-      btn.classList.remove('text-slate-400');
-
-      const val = parseFloat(btn.getAttribute('data-target-sqft'));
-      state.targetPriceSqft = val;
-      if (sqftSlider) sqftSlider.value = val;
-      calculateSimulator();
-    });
-  });
 
   // Hamburger Drawer Logic
   const btnHamburger = document.getElementById('btn-hamburger');
@@ -393,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.openImageModal = function(src, title) {
     if (modal && modalImg) {
       modalImg.src = src;
-      if (modalTitle) modalTitle.textContent = title || 'Visual Inspection';
+      if (modalTitle) modalTitle.textContent = title || 'Visual Document Inspection';
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
@@ -420,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initialize
+  // Initial load
   updateCurrencyElements();
-  calculateSimulator();
+  console.log('Dubai Unified Simulator initialized smoothly.');
 });

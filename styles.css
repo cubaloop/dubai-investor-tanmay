@@ -190,3 +190,15 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Simulator Visual Progress Bars */
+.sim-bar-fill {
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+}
+.year-step-active {
+  background: linear-gradient(135deg, #dfb774 0%, #c89d53 100%) !important;
+  color: #08090d !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 20px rgba(223, 183, 116, 0.4) !important;
+  border-color: #dfb774 !important;
+}
