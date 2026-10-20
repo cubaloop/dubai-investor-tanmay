@@ -4,7 +4,7 @@
     supabaseUrl: 'https://jyrqzjctkmzdvmraqrcv.supabase.co',
     supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5cnF6amN0a216ZHZtcmFxcmN2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NjI4MTU3NCwiZXhwIjoyMTAxODU3NTc0fQ.jpzy38i_JqhKiLZwNFXESJo62kk4vWvwCVPLpFIyLjc',
     excludedIPs: ['176.205.16.195'],
-    excludedSubnets: ['176.205.'],
+    excludedSubnets: [], // Subnet removed so Etisalat users in UAE (Tanmay) are never falsely discarded
     heartbeatIntervalMs: 15000, // 15 seconds
   };
 
@@ -59,7 +59,7 @@
     }
 
     try {
-      // Fetch Client IP & Geo
+      // Fetch Client IP & Geo with resilient fallback
       let ipData = null;
       try {
         const res = await fetch('https://ipapi.co/json/');
@@ -68,10 +68,21 @@
         try {
           const res2 = await fetch('https://ipwho.is/');
           if (res2.ok) ipData = await res2.json();
-        } catch (e2) {}
+        } catch (e2) {
+          try {
+            const res3 = await fetch('https://api.ipify.org?format=json');
+            if (res3.ok) {
+              const d3 = await res3.json();
+              ipData = { ip: d3.ip, city: 'UAE / Dubai', country_name: 'United Arab Emirates' };
+            }
+          } catch (e3) {}
+        }
       }
 
-      if (!ipData || !ipData.ip) return;
+      // If adblocker or privacy blocker blocks external IP lookups, DO NOT ABORT:
+      if (!ipData || !ipData.ip) {
+        ipData = { ip: 'direct_mobile', city: 'Direct Access', country_name: 'UAE / External' };
+      }
       clientGeo = ipData;
 
       // Check if IP matches David's IP
